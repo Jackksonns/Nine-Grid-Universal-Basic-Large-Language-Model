@@ -1,0 +1,12 @@
+[
+    {
+        "dataset_name": "wikipedia",
+        "task_name": "wikipedia",
+        "weight": 1.0,
+        "path": "path/to/data",
+        "incontext_weight": [
+            1.0
+        ],
+        "transforms": "/home/USERNAME/cpm9g/apps/cpm9g/config/datasets/wikipedia/script_cpmc.py"
+    }
+]
