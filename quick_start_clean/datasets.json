@@ -1,0 +1,12 @@
+[
+    {
+        "dataset_name": "alpaca_zh",
+        "task_name": "alpaca_zh",
+        "weight": 1.0,
+        "path": "/data/public/CPM-9G/quick_start/bin_data_repeat",
+        "incontext_weight": [
+            1.0
+        ],
+        "transforms": "/data/public/CPM-9G/quick_start/transform_data.py"
+    }
+]
