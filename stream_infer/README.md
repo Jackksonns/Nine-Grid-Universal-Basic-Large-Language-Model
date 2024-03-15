@@ -5,7 +5,7 @@
 docker 路径：https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/cpmlive-flash-0.0.5.tar
 docker的使用：见QuickStart手册.pdf
 
-启动docker之后，在命令行中执行conda activate stream_info，后续的处理都在stream_info环境下进行执行
+启动docker之后，在命令行中执行conda activate stream_infer，后续的处理都在stream_infer环境下进行执行
 
 # 流程：
 1 将模型进行convert处理，将训练模型转换成流式输出支持的格式
