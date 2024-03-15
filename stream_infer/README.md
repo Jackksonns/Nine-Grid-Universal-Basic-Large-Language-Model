@@ -2,7 +2,7 @@
 
 # 环境安装
 基于方便，采用了镜像形式进行使用
-docker 路径：
+docker 路径：https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/cpmlive-flash-0.0.5.tar
 docker的使用：见QuickStart手册.pdf
 
 启动docker之后，在命令行中执行conda activate stream_info，后续的处理都在stream_info环境下进行执行
@@ -23,6 +23,7 @@ docker的使用：见QuickStart手册.pdf
    (1) 设置CUDA_VISIBLE_DEVICES的数目
    
    (2) 修改LocalLoader 类中模型的属性，将下面这6个函数依据提供的模型config文件中的字段进行修改
+   
     def num_layers(self):
     def dim_model(self):
     def num_heads(self):
