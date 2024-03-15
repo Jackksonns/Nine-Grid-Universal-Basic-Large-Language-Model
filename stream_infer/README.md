@@ -32,17 +32,20 @@ docker的使用：见QuickStart手册.pdf
     def dim_ff(self):
     
    (3) 在修改LocalLoader类别调用的时候 将上一步生成的模型文件和词表位置输入，memory_limit无需修改
+   
      model = libcpm.CPMCaterpillar(
     LocalLoader(
         "model_8b.ckpt",
         "vocabs.txt",
     )
+       
    (4) 执行python deploy_llm_8b_demo.py
 
 3 测试请求：
   (1) 修改url，本机请求的话是localhost 或者127.0.0.1，url是该及其的ip
      
   (2) 可以修改payload中的content内容，举例：
+     
      payload = json.dumps({
       "content": "<用户>好久不见！<AI>"})
      payload = json.dumps({
