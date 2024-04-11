@@ -5,3 +5,6 @@
 九格百亿级通用基础大模型的参数量为8B（80亿）。
 模型路径：https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/checkpoints-epoch-1.tar.gz
 docker 路径：https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/cpmlive-flash-0.0.4.tar
+
+<video src="https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/%E8%AF%BE%E7%A8%8B%E8%A7%86%E9%A2%91/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AE%BA-%E5%AD%99%E8%8C%82%E6%9D%BE%E8%80%81%E5%B8%88-1124.mp4
+" width="800px" height="600px" controls="controls"></video>
