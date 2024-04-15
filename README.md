@@ -20,6 +20,12 @@ docker 路径：https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/cpmlive-fla
 ## 大模型领域适配原理与实战
 <video src="https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/%E8%AF%BE%E7%A8%8B%E8%A7%86%E9%A2%91/2023-12-29%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%A2%86%E5%9F%9F%E9%80%82%E9%85%8D%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E6%88%98-%E7%8E%8B%E7%A1%95_DeWatermark.mp4
 " width="800px" height="600px" controls="controls"></video>
+## 知识增强的大语言模型
+<video src="https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/%E8%AF%BE%E7%A8%8B%E8%A7%86%E9%A2%91/%E7%9F%A5%E8%AF%86%E5%A2%9E%E5%BC%BA%E7%9A%84%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B.mp4
+" width="800px" height="600px" controls="controls"></video>
+## 大模型工具学习
+<video src="https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/%E8%AF%BE%E7%A8%8B%E8%A7%86%E9%A2%91/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%B7%A5%E5%85%B7%E5%AD%A6%E4%B9%A0.mp4
+" width="800px" height="600px" controls="controls"></video>
 
 ## 大语言模型驱动的多智能体协作与演化
 <video src="https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/%E8%AF%BE%E7%A8%8B%E8%A7%86%E9%A2%91/400_0121.mp4
