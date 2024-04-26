@@ -39,13 +39,21 @@ docker run -it -d -v [HOST_PATH1]:[DOCKER_PATH1] -v [HOST_PATH2]:[DOCKER_PATH2] 
 - --network host: 这个选项用于让容器共享主机网络命名空间，使容器可以直接访问主机上的网络接口和服务；
 - --shm-size 容器的share memory，根据主机的情况设置，如果训练推理需要的内存比较多，可以增大share memory值；
 ### 进入容器
+```
 docker exec -it [CONTAINER_ID] bash
+```
 ### 退出容器
+```
 Ctrl+d
+```
 ### 删除容器
+```
 docker stop [CONTAINER_ID]
+```
 ### 查看正在运行容器
+```
 docker ps
+```
 
 ## Conda环境配置
 ### 训练环境配置
