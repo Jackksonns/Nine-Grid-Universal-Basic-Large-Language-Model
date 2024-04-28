@@ -10,7 +10,8 @@
 ## 人工智能大模型通论
 <video src="https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/%E8%AF%BE%E7%A8%8B%E8%A7%86%E9%A2%91/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AE%BA-%E5%AD%99%E8%8C%82%E6%9D%BE%E8%80%81%E5%B8%88-1124_DeWatermark.mp4
 " width="800px" height="600px" controls="controls"></video>
-
+[人工智能与大模型通论-PPT](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/%E8%AF%BE%E7%A8%8B%E8%A7%86%E9%A2%91/1.%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%80%9A%E8%AE%BA-PPT.pdf)
+                                                      
 ## 大模型技术的重要特性与发展趋势
 <video src="https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/%E8%AF%BE%E7%A8%8B%E8%A7%86%E9%A2%91/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8A%80%E6%9C%AF%E7%9A%84%E9%87%8D%E8%A6%81%E7%89%B9%E6%80%A7%E4%B8%8E%E5%8F%91%E5%B1%95%E8%B6%8B%E5%8A%BF-%E5%88%98%E7%9F%A5%E8%BF%9C%E8%80%81%E5%B8%88-1201_DeWatermark.mp4
 " width="800px" height="600px" controls="controls"></video>
