@@ -42,7 +42,7 @@ def split(x, s):
 
 
 def main(src_model_path, dst_model_path, layer_num):
-    #训练保存的原始模型
+  
     model = torch.load(src_model_path, map_location="cpu")
     params = {}
 
@@ -74,7 +74,9 @@ def main(src_model_path, dst_model_path, layer_num):
 
 
 if __name__ == '__main__':
-    src_model_path = "/home/wangyixuan/workplace/llm_service/sse/checkpoints-epoch-2/cpm9g-8b-sft-epoch-2.pt"
+    # 输入已有的源模型
+    src_model_path = "./checkpoints-epoch-1/cpm9g-8b-sft-epoch-1.pt"
+    # 格式转换后的模型地址
     dst_model_path = "model_8b.ckpt"
     
     # 百亿：32
