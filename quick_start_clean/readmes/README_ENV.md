@@ -4,7 +4,7 @@
 ## 镜像加载
 ### rootless 启动
 允许用户在不影响主机系统的情况下运行应用程序和服务，并且可以轻松地共享和分发环境
-```js
+```shell
 srun -p gpu1 --nodelist=g2001 -N 1 -n 8 -c 8 --gres=gpu:8 --pty bash
 module load rootless-docker/default 
 ```
@@ -13,7 +13,7 @@ module load rootless-docker/default
 start_rootless_docker.sh运行成功的话，此时执行docker ps可以看到当前没有正在运行的容器，如果有正在运行的容器，说明rootless模式没有启动成功，请联系管理员。
 
 ### 加载镜像
-```js
+```shell
 docker load -i cpmlive-flash-0.0.4.tar
 docker tag [IMAGE_ID] cpmlive-flash:0.0.4
 ```
@@ -22,12 +22,11 @@ docker tag [IMAGE_ID] cpmlive-flash:0.0.4
 
 ### 启动容器
 ```
-docker run -it -d -v [HOST_PATH1]:[DOCKER_PATH1] -v [HOST_PATH2]:[DOCKER_PATH2] --gpus all --shm-size=4g --sh cpmlive-flash:0.0.4 bash非rootless 启动
+docker run -it -d -v [HOST_PATH1]:[DOCKER_PATH1] -v [HOST_PATH2]:[DOCKER_PATH2] --gpus all --shm-size=4g --sh cpmlive-flash:0.0.4 bash
 ```
-
 如果有docker权限、且rootless执行错误的情况下，可以尝试下非rootless启动
-加载镜像同rootles过程
 
+## 非rootless 启动
 ### 启动容器
 ```
 docker run -it -d -v [HOST_PATH1]:[DOCKER_PATH1] -v [HOST_PATH2]:[DOCKER_PATH2] --gpus all --network host --shm-size=4g cpmlive-flash:0.0.4 bash
@@ -39,19 +38,19 @@ docker run -it -d -v [HOST_PATH1]:[DOCKER_PATH1] -v [HOST_PATH2]:[DOCKER_PATH2] 
 - --network host: 这个选项用于让容器共享主机网络命名空间，使容器可以直接访问主机上的网络接口和服务；
 - --shm-size 容器的share memory，根据主机的情况设置，如果训练推理需要的内存比较多，可以增大share memory值；
 ### 进入容器
-```
+```shell
 docker exec -it [CONTAINER_ID] bash
 ```
 ### 退出容器
-```
+```shell
 Ctrl+d
 ```
 ### 删除容器
-```
+```shell
 docker stop [CONTAINER_ID]
 ```
 ### 查看正在运行容器
-```
+```shell
 docker ps
 ```
 
@@ -60,10 +59,18 @@ docker ps
 
 1. 使用python 3.8.10创建conda环境
 ```shell
-conda create -n cpm-9g python=3.8.10  # 安装Pytorch
-conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.6 -c pytorch -c nvidia  #安装BMTrain
-pip install bmtrain==0.2.3.post2  #4. 安装flash-attn
-pip install flash-attn==2.0.8  #5. 安装其他依赖包
+conda create -n cpm-9g python=3.8.10 
+
+1.安装Pytorch
+conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.6 -c pytorch -c nvidia  
+
+2. 安装BMTrain
+pip install bmtrain==0.2.3.post2  
+
+3. 安装flash-attn
+pip install flash-attn==2.0.8  
+
+4. 安装其他依赖包
 pip install einops
 pip install pytrie
 ```
@@ -75,7 +82,9 @@ cuda：11.4-11.6之间都可以
 ### 推理环境配置
 ```js
 1. 安装nvidia-nccl
-pip install nvidia-nccl-cu11==2.19.3配置环境变量
+pip install nvidia-nccl-cu11==2.19.3   
+
+2. 配置环境变量
 nccl_root=`python -c "import nvidia.nccl;import os; print(os.path.dirname(nvidia.nccl.__file__))"`
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$nccl_root/lib
 echo $LD_LIBRARY_PATH2. 安装LibCPM
