@@ -59,11 +59,11 @@ docker ps
 ### 训练环境配置
 
 1. 使用python 3.8.10创建conda环境
-```js
-conda create -n cpm-9g python=3.8.102. 安装Pytorch
-conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.6 -c pytorch -c nvidia3. 安装BMTrain
-pip install bmtrain==0.2.3.post24. 安装flash-attn
-pip install flash-attn==2.0.85. 安装其他依赖包
+```shell
+conda create -n cpm-9g python=3.8.10  # 安装Pytorch
+conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.6 -c pytorch -c nvidia  #安装BMTrain
+pip install bmtrain==0.2.3.post2  #4. 安装flash-attn
+pip install flash-attn==2.0.8  #5. 安装其他依赖包
 pip install einops
 pip install pytrie
 ```
@@ -87,7 +87,7 @@ pip installlibcpm-1.0.0-cp38-cp38-linux_x86_64.whl
 | :--------  | :-----  | :----:  |
 | 百亿模型 |内存 |训练:140G, 推理:1G|
 | 百亿模型 |显存 |训练:49G, 推理:20G|
-| 千亿模型 |内存 |训练: 00G, 推理:2G|
+| 千亿模型 |内存 |训练: 200G, 推理:2G|
 | 千亿模型 |显存 |训练: 8*80G , 推理:4 * 50G|
 
 
