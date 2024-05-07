@@ -56,21 +56,20 @@ docker ps
 
 ## Conda环境配置
 ### 训练环境配置
-
-1. 使用python 3.8.10创建conda环境
 ```shell
+1. 使用python 3.8.10创建conda环境
 conda create -n cpm-9g python=3.8.10 
 
-1.安装Pytorch
+2.安装Pytorch
 conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.6 -c pytorch -c nvidia  
 
-2. 安装BMTrain
+3. 安装BMTrain
 pip install bmtrain==0.2.3.post2  
 
-3. 安装flash-attn
+4. 安装flash-attn
 pip install flash-attn==2.0.8  
 
-4. 安装其他依赖包
+5. 安装其他依赖包
 pip install einops
 pip install pytrie
 ```
