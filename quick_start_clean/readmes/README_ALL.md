@@ -221,6 +221,9 @@ $CMD
 
 ```
 
+### lora 训练
+[lora 训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_LORA.md)
+
 ## 模型推理
 ```python
 import os
@@ -262,6 +265,9 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+## 分布式多机训练
+[分布式多机训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_DISTRIBUTED.md)
 
 ## FAQs
 
