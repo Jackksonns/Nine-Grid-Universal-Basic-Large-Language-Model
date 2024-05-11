@@ -67,12 +67,10 @@ $CMD
 ```
 
 ## 合并模型
-训练好的lora delta model一般有两种方式
-- 在直接含有lora的推理代码进行推理
 - 将lora delta model参数和original model merge在一起 作为新的模型，但是模型的参数数量并没有增多
-
+```python
 python merge_lora_delta.py  --base_path cpm9g-8b-sft.pt --delta_path cpm9g-lora.pt --merge_path  cpm9g-8b-sft_with_lora.pt
-
+```
 
 # lora 推理
 
