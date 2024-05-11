@@ -1,6 +1,6 @@
 # Docker使用
 我们提供可以运行模型训练和推理的docker，便于在新环境下快速使用九格大模型。您也可以使用Conda配置运行环境。Conda配置方式请见下一节。
-#### docker 路径 https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/cpmlive-flash-0.0.4.tar
+#### [docker 路径](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/cpmlive-flash-0.0.4.tar)
 ## 镜像加载
 ### rootless 启动
 允许用户在不影响主机系统的情况下运行应用程序和服务，并且可以轻松地共享和分发环境
@@ -104,4 +104,3 @@ pip installlibcpm-1.0.0-cp38-cp38-linux_x86_64.whl
 - 百亿模型是在单卡A100上测试
 - 千亿的训练是用8卡A100，但是训到过程中out of memory，所以建议至少用2台A100或者至少两台
 - 千亿的推理是用4卡A100训练
-
