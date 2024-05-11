@@ -20,7 +20,7 @@ CMD="torchrun --nnodes=2 --nproc_per_node=8 --rdzv_id=1 --rdzv_backend=c10d --rd
 接下来，在这两个机器中都执行bash sft_cpm9g_8b.sh，这样就完成一次最简单的多机训练
 不过机器多了之后不推荐这种方式
 
-### slurm 集群多机任务提交
+## slurm 集群多机任务提交
 
 算力平台使用Slurm调度，常用Slurm命令包括：
 ``` shell
