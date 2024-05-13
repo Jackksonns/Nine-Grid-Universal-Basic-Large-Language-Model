@@ -1,15 +1,13 @@
 # 九格大模型使用文档
-目录
+## 目录
 - [环境配置](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#环境配置)
 - [开源模型](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#开源模型)
-- [数据](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#数据)
+- [数据构建](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#数据构建)
 - [模型训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#模型训练)
 - [模型推理](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#模型推理)
-- [开源模型](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#开源模型)
-- [分布式多机训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#分布式多机训练)
+- [多机训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#多机训练)
 - [FAQs](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#FAQs)     
-
-         
+   
 ## 环境配置：
 
 [环境配置、硬件信息](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ENV.md)
@@ -17,12 +15,10 @@
 ## 开源模型
 1 目前启元开源了80B的百亿SFT模型，模型的路径：[百亿SFT开源模型](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/checkpoints-epoch-1.tar.gz)
 
-
 ## 使用教程
-
 为了帮助您快速了解CPM-9G的使用，我们准备了一个快速入门教程，目标是基于CPM-9G基座模型通过指令微调的方式构建一个Chat模型。
 
-## 数据
+## 数据构建
 
 本教程使用的数据是Alpaca Zh，一个开源中文指令微调数据集。[数据集](https://github.com/Instruction-Tuning-with-GPT-4/GPT-4-LLM/blob/main/data/alpaca_gpt4_data_zh.json)
 
@@ -277,8 +273,7 @@ if __name__ == "__main__":
     main()
 ```
 
-## 分布式多机训练
-[分布式多机训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_DISTRIBUTED.md)
+## [多机训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_DISTRIBUTED.md)
 
 ## FAQs
 
