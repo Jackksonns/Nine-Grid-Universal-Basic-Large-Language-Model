@@ -178,7 +178,7 @@ CMD="torchrun --nnodes=1 --nproc_per_node=8 --rdzv_id=1 --rdzv_backend=c10d --rd
 echo "${CMD}"
 $CMD
 ```
-```
+
 ### SFT全参数微调训练
 ``` shell
 export MASTER_ADDR=`hostname`
