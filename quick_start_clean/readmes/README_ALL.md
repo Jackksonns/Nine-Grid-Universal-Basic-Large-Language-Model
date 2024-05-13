@@ -1,4 +1,6 @@
 # 九格大模型使用文档
+目录
+- [环境配置](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#环境配置)
 
 ## 环境配置：
 
