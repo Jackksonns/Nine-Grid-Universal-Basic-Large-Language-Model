@@ -5,7 +5,7 @@
 - [数据构建](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#数据构建)
 - [模型训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#模型训练)
 - [模型推理](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#模型推理)
-- [多机训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#多机训练)
+- [多机训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_DISTRIBUTED.md)
 - [FAQs](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#FAQs)     
    
 ## 环境配置：
@@ -112,11 +112,11 @@ def transform(data, num_sample: int, r: random.Random):
 
 ## 模型训练
 模型训练列举了三种训练
-- [pretrain 训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#pretrain 训练)  
+- [pretrain训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#pretrain训练)  
 - [SFT全参数微调训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#SFT全参数微调训练)  
-- [LoRA微调训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#LoRA微调训练)  
+- [LoRA微调训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_LORA.md)  
 
-### pretrain 训练：
+### pretrain训练：
 模型训练代码的位置：9G-Train/apps/cpm9g/pretrain_cpm9g.py
 需要将代码中环境变量设置为您的代码路径：
 ``` python
@@ -229,8 +229,6 @@ echo "${CMD}"
 $CMD
 ```
 
-### [LoRA微调训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_LORA.md)
-
 ## 模型推理
 ```python
 import os
@@ -272,8 +270,6 @@ def main():
 if __name__ == "__main__":
     main()
 ```
-
-## [多机训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_DISTRIBUTED.md)
 
 ## FAQs
 
