@@ -1,7 +1,15 @@
 # 九格大模型使用文档
 目录
 - [环境配置](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#环境配置)
+- [开源模型](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#开源模型)
+- [数据](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#数据)
+- [模型训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#模型训练)
+- [模型推理](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#模型推理)
+- [开源模型](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#开源模型)
+- [分布式多机训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#分布式多机训练)
+- [FAQs](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#FAQs)     
 
+         
 ## 环境配置：
 
 [环境配置、硬件信息](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ENV.md)
@@ -107,7 +115,12 @@ def transform(data, num_sample: int, r: random.Random):
 - 我们在此文件中指定了数据文件的路径、转换脚本路径等信息，后续训练仅需要系统该文件的路径即可。
 
 ## 模型训练
+模型训练列举了三种训练
+- [pretrain 训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#pretrain 训练)  
+- [SFT全参数微调训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#SFT全参数微调训练)  
+- [LoRA微调训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#LoRA微调训练)  
 
+### pretrain 训练：
 模型训练代码的位置：9G-Train/apps/cpm9g/pretrain_cpm9g.py
 需要将代码中环境变量设置为您的代码路径：
 ``` python
@@ -115,7 +128,6 @@ def transform(data, num_sample: int, r: random.Random):
 sys.path.insert(0, "/data/public/CPM-9G/9G-Train")
 ```
 
-### pretrain shell脚本：
 ```shell
 #! /bin/bash
 
@@ -172,9 +184,8 @@ echo "${CMD}"
 $CMD
 ```
 
-### sft 训练shell 脚本
+### SFT全参数微调训练
 ``` shell
-
 export MASTER_ADDR=`hostname`
 export MASTER_PORT=12345
 
@@ -220,11 +231,9 @@ OPTS+=" $@"
 CMD="torchrun --nnodes=1 --nproc_per_node=8 --rdzv_id=1 --rdzv_backend=c10d --rdzv_endpoint=${MASTER_ADDR}:${MASTER_PORT} ${CPM_PATH}/apps/cpm9g/sft_cpm9g.py ${OPTS}"
 echo "${CMD}"
 $CMD
-
 ```
 
-### lora 训练
-[lora 训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_LORA.md)
+### [LoRA微调训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_LORA.md)
 
 ## 模型推理
 ```python
@@ -286,7 +295,7 @@ if __name__ == "__main__":
   ```
 5 微调训练中，train_iters如何计算？
   ```
-  回答：因为模型上下文是4096的token数目，通常情况存在训练数据不足4096的长度，所以会对多条数据进行merge，送入模型的数据量会少于1000条
+  回答：因为模型上下文是4096的token数目，通常情况存在训练数据不足4096的长度，所以会对多条数据进行merge，因此送入模型条数要少于实际的数据条数
   ```
 6 打印出来的Iter信息有缺失
   ```
@@ -311,4 +320,3 @@ datas = [
 
 ## TODO
 1 发布最新训练的80B SFT模型
-2 Lora相关的代码更新
