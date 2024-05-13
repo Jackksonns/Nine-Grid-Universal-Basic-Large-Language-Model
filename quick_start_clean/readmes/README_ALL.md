@@ -6,16 +6,16 @@
 - [模型训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#模型训练)
 - [模型推理](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#模型推理)
 - [多机训练](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_DISTRIBUTED.md)
-- [FAQs](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#FAQs)       
-## 环境配置：
+- [FAQs](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#FAQs)
 
+帮助您快速了解CPM-9G的使用，我们准备了一个快速入门教程，目标是基于CPM-9G基座模型通过指令微调的方式构建一个Chat模型。      
+## 环境配置：
 [环境配置、硬件信息](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ENV.md)
 
 ## 开源模型
 1 目前启元开源了80B的百亿SFT模型，模型的路径：[百亿SFT开源模型](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/checkpoints-epoch-1.tar.gz)
 
-## 使用教程
-为了帮助您快速了解CPM-9G的使用，我们准备了一个快速入门教程，目标是基于CPM-9G基座模型通过指令微调的方式构建一个Chat模型。
+
 
 ## 数据构建
 
