@@ -53,6 +53,10 @@ docker stop [CONTAINER_ID]
 ```shell
 docker ps
 ```
+### 环境安装
+```shell
+pip install tensorboardX
+```
 
 ## Conda环境配置
 ### 训练环境配置
