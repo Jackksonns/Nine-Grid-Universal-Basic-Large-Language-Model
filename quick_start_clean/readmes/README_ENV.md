@@ -1,3 +1,6 @@
+#环境配置、算力资源
+
+         
 # Docker使用
 我们提供可以运行模型训练和推理的docker，便于在新环境下快速使用九格大模型。您也可以使用Conda配置运行环境。Conda配置方式请见下一节。
 #### [docker 路径](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/cpmlive-flash-0.0.4.tar)
