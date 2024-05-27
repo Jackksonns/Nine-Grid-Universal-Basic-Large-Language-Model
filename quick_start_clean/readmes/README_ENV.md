@@ -94,7 +94,7 @@ echo $LD_LIBRARY_PATH2. 安装LibCPM
 pip installlibcpm-1.0.0-cp38-cp38-linux_x86_64.whl
 ```
 
-# 硬件资源
+# 算力资源
 ## 推荐配置：
 ### 千亿大模型
    - 预训练、全参数微调：8 * 512G以上内存，64 * 80G以上显存
