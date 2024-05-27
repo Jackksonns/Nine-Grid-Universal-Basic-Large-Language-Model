@@ -10,7 +10,7 @@
 
 帮助您快速了解CPM-9G的使用，我们准备了一个快速入门教程，目标是基于CPM-9G基座模型通过指令微调的方式构建一个Chat模型。      
 ## 环境配置：
-[环境配置、硬件信息](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ENV.md)
+[环境配置、算力资源](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ENV.md)
 
 ## 开源模型
 1 目前启元开源了80B的百亿SFT模型，模型的路径：[百亿SFT开源模型](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/checkpoints-epoch-1.tar.gz)
