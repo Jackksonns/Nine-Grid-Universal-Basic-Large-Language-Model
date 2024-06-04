@@ -13,7 +13,7 @@
 [环境配置、算力资源](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ENV.md)
 
 ## 开源模型
-1 目前启元开源了80B的百亿SFT模型，模型的路径：[百亿SFT开源模型](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/checkpoints-epoch-1.tar.gz)
+1 目前启元开源了80B的百亿SFT模型，模型的路径：[百亿SFT开源模型](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/sft_8b_v2.zip)
 
 
 
