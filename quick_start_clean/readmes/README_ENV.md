@@ -10,10 +10,11 @@
 ```shell
 srun -p gpu1 --nodelist=g2001 -N 1 -n 8 -c 8 --gres=gpu:8 --pty bash
 module load rootless-docker/default 
+start_rootless_docker.sh
 ```
 
 **注意使用bash（不能用zsh）**
-start_rootless_docker.sh运行成功的话，此时执行docker ps可以看到当前没有正在运行的容器，如果有正在运行的容器，说明rootless模式没有启动成功，请联系管理员。
+运行成功的话，此时执行docker ps可以看到当前没有正在运行的容器，如果有正在运行的容器，说明rootless模式没有启动成功，请联系管理员。
 
 ### 加载镜像
 ```shell
