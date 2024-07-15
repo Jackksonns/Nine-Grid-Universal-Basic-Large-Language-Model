@@ -1,41 +1,21 @@
-import os
+# pip install vllm
+# vllm 0.22版本适合低nvidia驱动 如470.xx.xx,cuda11
+# vllm 0.41+ 版本适合高nvidia驱动，如535.161.xx, cuda12
 
-from libcpm import CPM9G
+from vllm import LLM, SamplingParams
 
-import argparse, json, os
+# Sample prompts.
+prompts = ["请介绍下启元实验室",]
+# Create a sampling params object.
+sampling_params = SamplingParams(temperature=0.3, top_p=0.8)
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--pt", type=str, help="the path of ckpt")
-    parser.add_argument("--config", type=str, help="the path of config file")
-    parser.add_argument("--vocab", type=str, help="the path of vocab file")
-    args = parser.parse_args()
+# Create an LLM.
+#llm = LLM(model="../models/facebook/opt-125m")
+llm = LLM(model="fm9g-selfrec/", trust_remote_code=True)
 
-    model_config = json.load(open(args.config, 'r'))
-    model_config["new_vocab"] = True
-
-    model = CPM9G(
-        "",
-        args.vocab,
-        0,
-        memory_limit = 30 << 30,
-        model_config=model_config,
-        load_model=False,
-    )
-    model.load_model_pt(args.pt)
-
-    datas = [
-        '''<用户>马化腾是谁？<AI>''',
-        '''<用户>你是谁？<AI>''',
-        '''<用户>我要参加一个高性能会议，请帮我写一个致辞。<AI>''',
-    ]
-
-    # print(model.inference(datas, max_length=30))  # inference batch
-
-    for data in datas:
-        res = model.inference(data, max_length=4096)
-        print(res['result'])
-        # print(model.random_search(data))
-
-if __name__ == "__main__":
-    main()
+outputs = llm.generate(prompts, sampling_params)
+# Print the outputs.
+for output in outputs:
+    prompt = output.prompt
+    generated_text = output.outputs[0].text
+    print(f"Prompt: {prompt!r}, Generated text: {generated_text!r}")

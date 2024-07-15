@@ -1,0 +1,134 @@
+[
+    {
+        "dataset_name": "humanevallike_clean_dedup",
+        "task_name": "humanevallike_clean_dedup",
+        "abs_weight": 0.2,
+        "path": "/data/groups/QY_LLM_Core/sa_data/sft_data/0124_hq_data/humanevallike_clean_dedup",
+        "transforms": "0124_hq_data/general/script_cpmc.py",
+        "allow_repeat": true,
+        "nlines": 995339,
+        "ave_tokens_per_line": 100,
+        "total_tokens": 0.1
+    },
+    {
+        "dataset_name": "leetcode_pass_code_0125",
+        "task_name": "leetcode_pass_code_0125",
+        "abs_weight": 0.006,
+        "path": "/data/groups/QY_LLM_Core/sa_data/sft_data/0124_hq_data/leetcode_pass_code_0125",
+        "transforms": "0124_hq_data/general/script_cpmc.py",
+        "allow_repeat": true,
+        "nlines": 10724,
+        "ave_tokens_per_line": 200,
+        "total_tokens": 0.002
+    },
+    {
+        "dataset_name": "logiv2Annotate",
+        "task_name": "logiv2Annotate",
+        "abs_weight": 0.004,
+        "path": "/data/groups/QY_LLM_Core/sa_data/sft_data/0124_hq_data/logiv2Annotate",
+        "transforms": "0124_hq_data/general/script_cpmc.py",
+        "allow_repeat": true,
+        "nlines": 12566,
+        "ave_tokens_per_line": 512,
+        "total_tokens": 0.006
+    },
+    {
+        "dataset_name": "mmlu_enhance",
+        "task_name": "mmlu_enhance",
+        "abs_weight": 0.1,
+        "path": "/data/groups/QY_LLM_Core/sa_data/sft_data/0124_hq_data/mmlu_enhance",
+        "transforms": "0124_hq_data/general/script_cpmc.py",
+        "allow_repeat": true,
+        "nlines": 169771,
+        "ave_tokens_per_line": 300,
+        "total_tokens": 0.05
+    },
+    {
+        "dataset_name": "mtbench_like",
+        "task_name": "mtbench_like",
+        "abs_weight": 0.2,
+        "path": "/data/groups/QY_LLM_Core/sa_data/sft_data/0124_hq_data/mtbench_like",
+        "transforms": "0124_hq_data/general/script_cpmc.py",
+        "allow_repeat": true,
+        "nlines": 319080,
+        "ave_tokens_per_line": 500,
+        "total_tokens": 0.15
+    },
+    {
+        "dataset_name": "ultra_dataset_new",
+        "task_name": "ultra_dataset_new",
+        "abs_weight": 2.0,
+        "path": "/data/groups/QY_LLM_Core/sa_data/sft_data/0124_hq_data/ultra_dataset_new",
+        "transforms": "0124_hq_data/general/script_cpmc.py",
+        "allow_repeat": true,
+        "nlines": 385045,
+        "ave_tokens_per_line": 200.296266559615,
+        "total_tokens": 2.0
+    },
+    {
+        "dataset_name": "sft_data_zh_wowru",
+        "task_name": "sft_data_zh_wowru",
+        "abs_weight": 1.0,
+        "path": "/data/groups/QY_LLM_Core/sa_data/sft_data/0124_hq_data/sft_data_zh_wowru",
+        "transforms": "0124_hq_data/general/script_cpmc.py",
+        "allow_repeat": true,
+        "nlines": 2963260,
+        "ave_tokens_per_line": 200.296266559615,
+        "total_tokens": 1
+    },
+    {
+        "dataset_name": "math_data",
+        "task_name": "math_data",
+        "abs_weight": 0.003,
+        "path": "/data/groups/QY_LLM_Core/sa_data/sft_data/0124_hq_data/math_data",
+        "transforms": "0124_hq_data/add_userai/script_cpmc.py",
+        "allow_repeat": true,
+        "nlines": 2963260,
+        "ave_tokens_per_line": 200.296266559615,
+        "total_tokens": 0.005
+    },
+    {
+        "dataset_name": "t0",
+        "task_name": "t0",
+        "abs_weight": 0.1,
+        "path": "/data/groups/QY_LLM_Core/sa_data/sft_data/0124_hq_data/t0",
+        "transforms": "0124_hq_data/add_userai/script_cpmc.py",
+        "allow_repeat": true,
+        "nlines": 1650309,
+        "ave_tokens_per_line": 500.296266559615,
+        "total_tokens": 0.82
+    },
+    {
+        "dataset_name": "wikihow",
+        "task_name": "wikihow",
+        "abs_weight": 0.1,
+        "path": "/data/groups/QY_LLM_Core/sa_data/sft_data/0124_hq_data/wikihow",
+        "transforms": "0124_hq_data/general/script_cpmc.py",
+        "allow_repeat": true,
+        "nlines": 180128,
+        "ave_tokens_per_line": 900.296266559615,
+        "total_tokens": 0.16
+    },
+    {
+        "dataset_name": "reclor",
+        "task_name": "reclor",
+        "abs_weight": 0.002,
+        "path": "/data/groups/QY_LLM_Core/sa_data/sft_data/0124_hq_data/reclor",
+        "transforms": "0124_hq_data/general/script_cpmc.py",
+        "allow_repeat": true,
+        "nlines": 4174,
+        "ave_tokens_per_line": 700.296266559615,
+        "total_tokens": 0.003
+    },
+    {
+        "dataset_name": "logic_test_lx_0127",
+        "task_name": "logic_test_lx_0127",
+        "abs_weight": 0.001,
+        "path": "/data/groups/QY_LLM_Core/sa_data/sft_data/0124_hq_data/logic_test_lx_0127",
+        "transforms": "0124_hq_data/add_userai/script_cpmc.py",
+        "allow_repeat": true,
+        "nlines": 2800,
+        "ave_tokens_per_line": 200.96266559615,
+        "total_tokens": 0.0004
+    }
+]
