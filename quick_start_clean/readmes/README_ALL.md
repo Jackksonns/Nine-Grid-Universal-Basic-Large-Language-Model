@@ -13,8 +13,12 @@
 [环境配置、算力资源](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ENV.md)
 
 ## 开源模型
-1 目前启元开源了80B的百亿SFT模型，v2版本是在v1基础上精度和对话能力的优化模型，下载链接：
- [8b_v1版本](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/checkpoints-epoch-1.tar.gz), [8b_v2版本](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/sft_8b_v2.zip)
+1 8B的百亿SFT模型，v2版本是在v1基础上精度和对话能力的优化模型，下载链接：
+ [8b_sft_model_v1](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/checkpoints-epoch-1.tar.gz), [8b_sft_model_v2](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/sft_8b_v2.zip)
+
+2 端侧2B模型，下载链接：
+[2b—sft-model]
+
 
 ## 数据构建
 
