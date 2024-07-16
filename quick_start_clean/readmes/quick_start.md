@@ -241,7 +241,7 @@ bash pretrain_dragonfly.sh
 常用的slurm命令包括：
 ```
 slurm命令    功能
-------------------------------
+
 sinfo    查看集群分区状态
 squeue    查看作业队列
 srun, salloc    交互式运行作业
