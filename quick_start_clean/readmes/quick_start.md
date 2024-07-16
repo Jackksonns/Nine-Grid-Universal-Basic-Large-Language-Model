@@ -128,7 +128,6 @@ pip install tensorboardX
 1. 参考以下脚本，将txt数据处理为jsonl格式：
 ```python
 # convert_txt2jsonl.py
-
 import json
 import sys
 
