@@ -141,10 +141,12 @@ for line in sys.stdin:
 ```shell
 cat pretrain.txt | python convert_txt2jsonl.py > pretrain.jsonl
 ```
+
 输出的jsonl文件中，其中每一行有两个字段：input字段与output字段。例如：
 ```JSON
 {"input":"","output":"中国的首都是北京。"}
 ```
+
 2. jsonl格式转index。脚本位于./quick_start_clean/convert_json2index.py，应用方法如下：
 ```shell
 python convert_json2index.py \
@@ -153,6 +155,7 @@ python convert_json2index.py \
 --output ../data_process/data_index \ #存放生成的index的目录，与原先存放jsonl文件的目录不能相同
 --hdfs_name index  #index文件的文件名
 ```
+
 脚本运行成功时，会有如下显示：（不需要用hadoop所以不用管hadoop: not found的警告信息）
 ![alt text](055bf7ce-faab-403b-a7ee-896279bee11f.png)
 
