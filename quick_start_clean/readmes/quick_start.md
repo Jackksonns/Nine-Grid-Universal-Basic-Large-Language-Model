@@ -273,7 +273,6 @@ sacct    查看已完成作业
 #SBATCH --cpus-per-task=8 #每个任务分配的CPU数量（建议不要修改），该节点的cpu总数为任务数乘以每个任务的cpu数，这个示例脚本中的cpu总数为8x8=64
 MASTER_ADDR=`hostname`
 echo $MASTER_ADDR #可以在slurm-xxx.out中查看申请的主节点名称
-
 while true;do
 sleep 5s #
 ```
@@ -472,7 +471,7 @@ if __name__ == "__main__":
   ```shell
   error: Couldn't find a setup script in /tmp/easy_install-bgpiop4j/pandas-2.2.2.tar.gz
   ```
-  
+
   这是因为pandas 2.2.2需要python3.9及以上的版本。在python3.8的环境下，我们只需安装pandas 2.0.3版本即可。
 
 6. 通过setup.py安装OpenDelta时报错：
