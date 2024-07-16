@@ -148,6 +148,7 @@ cat pretrain.txt | python convert_txt2jsonl.py > pretrain.jsonl
 ```
 
 2. jsonl格式转index。脚本位于./quick_start_clean/convert_json2index.py，应用方法如下：
+
 ```shell
 python convert_json2index.py \
 --path ../data_process/data \ #存放jsonl文件的目录
