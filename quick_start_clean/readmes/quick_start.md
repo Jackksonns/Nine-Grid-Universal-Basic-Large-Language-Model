@@ -159,8 +159,7 @@ python convert_json2index.py \
 
 脚本运行成功时，会有如下显示：（不需要用hadoop所以不用管hadoop: not found的警告信息）
 
-<!-- ![alt text](./055bf7ce-faab-403b-a7ee-896279bee11f.png) -->
-![alt text](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/quick_start_clean/readmes/055bf7ce-faab-403b-a7ee-896279bee11f.png)
+![脚本运行成功后的显示](./055bf7ce-faab-403b-a7ee-896279bee11f.png)
 
 转完后，在index的目录下会生成四个文件：data.jsonl（原先的jsonl数据）、index、index.h5、meta.json（记录数据集信息，包含 "language", "nlines", "nbytes", "length_distribute", "avg_token_per_line", "hdfs_path", "data_sample"字段）。
 这里有一个meta.json的例子：
