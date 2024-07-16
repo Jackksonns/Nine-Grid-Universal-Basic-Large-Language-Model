@@ -126,7 +126,7 @@ pip install tensorboardX
 - 文件格式为.txt的原始文本，处理流程为：数据→jsonl格式的数据→index数据
 - 文件格式为.jsonl的文本数据，处理流程为j:数据→index数据
 1. 参考以下脚本，将txt数据处理为jsonl格式：
-```python
+``` python
 # convert_txt2jsonl.py
 import json
 import sys
