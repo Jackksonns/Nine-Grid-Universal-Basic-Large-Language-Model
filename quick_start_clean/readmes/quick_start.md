@@ -137,6 +137,7 @@ for line in sys.stdin:
     temp_json = {"input": "", "output": line.strip()}#预训练计算Loss时只计算output部分，所以input字段为空
     print(json.dumps(temp_json, ensure_ascii=False))
 ```
+
 脚本使用方法如下，其中pretrain.txt是原始txt数据，pretrain.jsonl是输出的jsonl格式数据：
 ```shell
 cat pretrain.txt | python convert_txt2jsonl.py > pretrain.jsonl
