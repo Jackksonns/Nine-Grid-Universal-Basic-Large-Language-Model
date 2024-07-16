@@ -157,9 +157,9 @@ python convert_json2index.py \
 --hdfs_name index  #index文件的文件名
 ```
 
-脚本运行成功时，会有如下显示：（不需要用hadoop所以不用管hadoop: not found的警告信息）
+<!-- 脚本运行成功时，会有如下显示：（不需要用hadoop所以不用管hadoop: not found的警告信息）
 
-![脚本运行成功后的显示](./055bf7ce-faab-403b-a7ee-896279bee11f.png)
+![脚本运行成功后的显示](./055bf7ce-faab-403b-a7ee-896279bee11f.png) -->
 
 转完后，在index的目录下会生成四个文件：data.jsonl（原先的jsonl数据）、index、index.h5、meta.json（记录数据集信息，包含 "language", "nlines", "nbytes", "length_distribute", "avg_token_per_line", "hdfs_path", "data_sample"字段）。
 这里有一个meta.json的例子：
@@ -195,6 +195,7 @@ python convert_json2index.py \
     }
 ]
   ```
+
 其中abs_weight需要自行设计；path、nlines、ave_tokens_per_line可以参考生成index时的meta.json进行填写；allow_repeat为数据集是否需要复制；total_tokens为估计的数据集token总数，以b（十亿）为单位，例如0.1代表0.1b个token，transforms为读入训练数据的脚本路径，该脚本可以参考以下代码：
 ```python
 # script_cpmc.py
@@ -217,6 +218,7 @@ def transform(data, num_sample: int, r: random.Random):
             "output": _output,
             }
 ```
+
 ## 单机训练
 1. 修改/apps/fm9g_2b/train_configs/2.4b.json中的训练参数，这一部分的参数设置会覆盖掉shell脚本中的相应部分。
 2. 修改FM_9G-master/FM_9G-master/apps/fm9g_2b/pretrain_dragonfly.sh中最后部分的训练参数，如下所示：
@@ -227,19 +229,23 @@ RANK=0 #单机训练无需修改这个参数
 MASTER_ENDPOINT=g3006 #该节点名称
 MASTER_PORT=12345 #该节点端口，注意避免端口冲突
 ```
+
 3. 激活自己的训练环境：
 ```shell
 conda activate fm-9g
 ```
+
 4. 指定要用的GPU：
 ```shell
 export CUDA_VISIBLE_DEVICES=0,1
 ```
+
 5. 切换到fm9g_2b目录下，运行训练脚本：
 ```shell
 cd FM_9G-master/FM_9G-master/apps/fm9g_2b
 bash pretrain_dragonfly.sh
 ```
+
 ## 多机训练
 需要保证机器之间能够通信，且每台机器上的训练环境、代码、数据等一致。以下教程以使用slurm调度的算力平台为例。
 常用的slurm命令包括：
@@ -254,7 +260,9 @@ scancel    取消作业
 scontrol    查看和修改作业参数
 sacct    查看已完成作业
 ```
+
 注意：#slurm的多节点通信与bmtrain的环境变量有冲突，且srun不稳定，推荐采用slurm提交多个单节点任务，用torchrun的方式实现多节点通信。
+
 1. 参考以下代码，编写主节点启动脚本run_master.sh：
 ```shell
 #!/bin/bash
@@ -269,16 +277,19 @@ echo $MASTER_ADDR #可以在slurm-xxx.out中查看申请的主节点名称
 while true;do
 sleep 5s #
 ```
+
 2. 启动主节点：
 ```shell
 sbatch --nodelist g3002 run_master.sh
 ```
+
 3. 登录主节点，激活训练环境：
 ```shell
 ssh g3002 #登录节点
 conda activate fm-9g #激活训练环境
 export CUDA_VISIBLE_DEVICES=0,1 #指定要用的GPU
 ```
+
 4. 修改主节点训练脚本：在/apps/fm9g_2b/pretrain_dragonfly.sh的最后修改主节点名称、端口、机器数量、GPU数量，并将脚本重命名为pretrain_dragonfly_master.sh，方便区分：
 ```shell
   GPUS_PER_NODE=2 #本节点上要用的GPU数量
@@ -287,12 +298,15 @@ export CUDA_VISIBLE_DEVICES=0,1 #指定要用的GPU
   MASTER_ENDPOINT=g3002 #主节点名称
   MASTER_PORT=12345 #主节点端口号，注意避免端口冲突
 ```
+
 5. 提交主节点训练脚本：
 ```shell
 cd FM_9G-master/FM_9G-master/apps/fm9g_2b
 bash pretrain_dragonfly_master.sh
 ```
+
 6. 启动从节点、激活训练环境，指定要用的卡，方法与主节点一样。
+
 7. 修改从节点训练脚本：将单机多卡的训练脚本重命名为pretrain_dragonfly_slave.sh，在末尾修改主节点名称、端口、机器数量、GPU数量：
 ```shell
   GPUS_PER_NODE=2 #本节点上要用的GPU数量
@@ -301,13 +315,15 @@ bash pretrain_dragonfly_master.sh
   MASTER_ENDPOINT=g3002 #主节点名称
   MASTER_PORT=12345 #主节点端口号，注意避免端口冲突
 ```
+
 8. 提交从节点训练脚本：
 ```shell
 cd FM_9G-master/FM_9G-master/apps/fm9g_2b
 bash pretrain_dragonfly_slave.sh
 ```
+
 9. 如果有三台及以上的机器，重复6-8，注意修改RANK编号
-10. 开始训练后，每个iter的loss、lr等信息将在从节点上显示
+10.  开始训练后，每个iter的loss、lr等信息将在从节点上显示
 
 ## 参数详细介绍
 ``` python
@@ -390,6 +406,7 @@ args["use_checkpoint"]="0"
 ```shell
 tensorboard –-logdir /apps/fm9g_2b/data/tensorboard/2b_0701 #存放.events文件的路径
 ```
+
 2. 出现以下报错信息时，说明protobuf版本过高，重新装一个低版本的即可：
 ```shell
 TypeError: MessageToJson() got an unexpected keyword argument 'including_default_value_fields'
@@ -445,6 +462,7 @@ if __name__ == "__main__":
       import torch
       print(torch._C._GLIBCXX_USE_CXX11_ABI)
   ```
+
   如果打印出来的结果是False，则选择文件名中带有abiFALSE的版本，否则选带有abiTRUE的版本。随后pip install +.whl文件名 即可。
 
 4. 导入flash-attn时报错：undefined symbol: _ZN3c104cuda9SetDeviceEi。
@@ -454,6 +472,7 @@ if __name__ == "__main__":
   ```shell
   error: Couldn't find a setup script in /tmp/easy_install-bgpiop4j/pandas-2.2.2.tar.gz
   ```
+  
   这是因为pandas 2.2.2需要python3.9及以上的版本。在python3.8的环境下，我们只需安装pandas 2.0.3版本即可。
 
 6. 通过setup.py安装OpenDelta时报错：
