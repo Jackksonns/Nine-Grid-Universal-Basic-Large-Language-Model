@@ -121,16 +121,15 @@ pip install tensorboardX
 [2b—sft-model] # TODO
 
 ## 数据处理流程
-  ### 单个数据集处理
-  预训练语料为无监督形式，不需要区分问题与答案，但需要将数据转为index后进行模型训练。我们拿到的原始数据可能是两种形式：
+### 单个数据集处理
+预训练语料为无监督形式，不需要区分问题与答案，但需要将数据转为index后进行模型训练。我们拿到的原始数据可能是两种形式：
 - 文件格式为.txt的原始文本，处理流程为：数据→jsonl格式的数据→index数据
 - 文件格式为.jsonl的文本数据，处理流程为j:数据→index数据
-参考以下脚本，将txt数据处理为jsonl格式：
+1. 参考以下脚本，将txt数据处理为jsonl格式：
 ``` python
 # convert_txt2jsonl.py
 import json
 import sys
-
 for line in sys.stdin:
     if line.strip() == "":
         continue
