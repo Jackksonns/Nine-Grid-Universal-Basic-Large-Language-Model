@@ -53,7 +53,6 @@
   - [多机训练](#多机训练)
   - [参数详细介绍](#参数详细介绍)
   - [查看训练情况](#查看训练情况)
-  - [模型推理 TODO:需要补充](#模型推理-todo需要补充)
   - [常见问题](#常见问题)
 
 <!-- ## 仓库目录结构
@@ -411,7 +410,7 @@ tensorboard –-logdir /apps/fm9g_2b/data/tensorboard/2b_0701 #存放.events文�
 TypeError: MessageToJson() got an unexpected keyword argument 'including_default_value_fields'
 ```
 
-## 模型推理 TODO:需要补充
+<!-- ## 模型推理 TODO:需要补充
 ```python
 import os
 from libcpm import CPM9G
@@ -443,7 +442,7 @@ def main():
         print(res['result'])
 if __name__ == "__main__":
     main()
-```
+``` -->
 
 ## 常见问题
 1. Conda安装pytorch时卡在solving environment：网络问题。
