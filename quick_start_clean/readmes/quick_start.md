@@ -469,11 +469,11 @@ python -m vllm.entrypoints.openai.api_server \
        --dtype auto \
        --trust-remote-code \ 
        --api-key CPMAPI
-
-# 与离线批量推理类似，使用端侧2B模型，tokenizer-mode为"auto"
-# dtype为模型数据类型，设置为"auto"即可
-# api-key为可选项，可在此处指定你的api密钥
+#与离线批量推理类似，使用端侧2B模型，tokenizer-mode为"auto"
+#dtype为模型数据类型，设置为"auto"即可
+#api-key为可选项，可在此处指定你的api密钥
 ```
+
 8B百亿SFT模型：
 ```shell
 python -m vllm.entrypoints.openai.api_server \
@@ -481,11 +481,11 @@ python -m vllm.entrypoints.openai.api_server \
        --tokenizer-mode cpm \ 
        --dtype auto \
        --api-key CPMAPI
-
-# 与离线批量推理类似，使用8B百亿SFT模型，tokenizer-mode为"cpm"
+#与离线批量推理类似，使用8B百亿SFT模型，tokenizer-mode为"cpm"
 ```
 
 执行对应指令后，默认在http://localhost:8000地址上启动服务，启动成功后终端会出现如下提示：
+
 ```shell
 INFO:     Started server process [950965]
 INFO:     Waiting for application startup.
@@ -495,9 +495,9 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 
 2. 调用API：
 启动服务端成功后，重新打开一个终端，可参考执行以下python脚本：
+
 ``` python
 from openai import OpenAI
-
 # 如果启动服务时指定了api密钥，需要修改为对应的密钥，否则为"EMPTY"
 openai_api_key = "CPMAPI" 
 openai_api_base = "http://localhost:8000/v1"
