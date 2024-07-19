@@ -40,7 +40,6 @@
 # 九格大模型使用文档
 ## 目录
 
-- [模型推理](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md?tab=readme-ov-file#模型推理)
 <!-- - [仓库目录结构](#仓库目录结构) -->
 - [九格大模型使用文档](#九格大模型使用文档)
   - [目录](#目录)
@@ -53,6 +52,7 @@
   - [多机训练](#多机训练)
   - [参数详细介绍](#参数详细介绍)
   - [查看训练情况](#查看训练情况)
+  - [模型推理](#模型推理)
   - [常见问题](#常见问题)
 
 <!-- ## 仓库目录结构
@@ -106,10 +106,11 @@ pip install tensorboard
 pip install tensorboardX
 
 
-8.安装vllm
-我们提供了两种vllm的安装方式
-请直接安装/quick_start_clean/tools/vllm-0.5.0.dev0+cu122-cp310-cp310-linux_x86_64.whl
-如果不成功，请通过源码安装vllm，即通过/quick_start_clean/tools/vllm-0.5.0.dev0.tar中的setup.py安装
+8.安装vllm（模型推理）
+我们提供了python3.8、python3.10版本的vllm安装包，相关依赖均已封装，可直接安装后执行推理：
+[vllm-0.5.0.dev0+cu122-cp38-cp38-linux_x86_64.whl](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/vllm-0.5.0.dev0%2Bcu122-cp38-cp38-linux_x86_64.whl)
+[vllm-0.5.0.dev0+cu122-cp310-cp310-linux_x86_64.whl](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/vllm-0.5.0.dev0%2Bcu122-cp310-cp310-linux_x86_64.whl)
+同时，我们也提供了vllm源码,位于/quick_start_clean/tools/vllm-0.5.0.dev0.tar。
 ```
 
 ## 开源模型
@@ -117,7 +118,7 @@ pip install tensorboardX
  [8b_sft_model_v1](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/checkpoints-epoch-1.tar.gz), [8b_sft_model_v2](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/sft_8b_v2.zip)
 
 2. 端侧2B模型，下载链接：
-[2b—sft-model] # TODO
+[2b—sft-model](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/fm9g_2b_hf_models.tar.gz)
 
 ## 数据处理流程
 ### 单个数据集处理
@@ -410,39 +411,104 @@ tensorboard –-logdir /apps/fm9g_2b/data/tensorboard/2b_0701 #存放.events文�
 TypeError: MessageToJson() got an unexpected keyword argument 'including_default_value_fields'
 ```
 
-<!-- ## 模型推理 TODO:需要补充
-```python
-import os
-from libcpm import CPM9G
-import argparse, json, os
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--pt", type=str, help="the path of ckpt")
-    parser.add_argument("--config", type=str, help="the path of config file")
-    parser.add_argument("--vocab", type=str, help="the path of vocab file")
-    args = parser.parse_args()
-    model_config = json.load(open(args.config, 'r'))
-    model_config["new_vocab"] = True
-    model = CPM9G(
-        "",
-        args.vocab,
-        -1,
-        memory_limit = 30 << 30,#memory limit 左边的参数根据gpu的显存设置，如果是A100，可以设置为 72 << 30，这样的话就可以用到更多的显存
-        model_config=model_config,
-        load_model=False,
-    )
-    model.load_model_pt(args.pt)
-    datas = [
-        '''<用户>马化腾是谁？<AI>''',
-        '''<用户>你是谁？<AI>''',
-        '''<用户>我要参加一个高性能会议，请帮我写一个致辞。<AI>''',
-    ]
-    for data in datas:
-        res = model.inference(data, max_length=4096)
-        print(res['result'])
-if __name__ == "__main__":
-    main()
-``` -->
+## 模型推理
+模型推理列举了两种推理方法：离线批量推理和部署OpenAI API服务推理
+
+### 离线批量推理：
+离线批量推理可参考以下脚本：
+``` python
+# offline_inference.py
+from vllm import LLM, SamplingParams
+
+# 提示用例
+prompts = [
+    "Hello, my name is",
+    "The president of the United States is",
+    "The capital of France is",
+    "The future of AI is",
+]
+
+# 设置采样参数以控制生成文本，更多参数详细介绍可见/vllm/sampling_params.py
+# temperature越大，生成结果的随机性越强，top_p过滤掉生成词汇表中概率低于给定阈值的词汇，控制随机性
+sampling_params = SamplingParams(temperature=0.8, top_p=0.95)
+
+# 初始化语言模型
+llm = LLM(model="../models/9G/", trust_remote_code=True)
+
+# 根据提示生成文本
+outputs = llm.generate(prompts, sampling_params)
+
+# 打印输出结果
+for output in outputs:
+    prompt = output.prompt
+    generated_text = output.outputs[0].text
+    print(f"Prompt: {prompt!r}, Generated text: {generated_text!r}")
+```
+
+在初始化语言模型部分，不同模型有所差异：
+端侧2B模型：
+``` python
+# 初始化语言模型，与Hugging Face Transformers库兼容，支持AWQ、GPTQ和GGUF量化格式转换
+llm = LLM(model="../models/FM9G/", tokenizer_mode="auto", trust_remote_code=True)
+```
+8B百亿SFT模型：
+``` python
+# 初始化语言模型，tokenizer_mode需指定为"cpm"，不支持AWQ、GPTQ和GGUF量化格式转换
+# 需要特别注意的是，由于8B模型训练分词方式差异，vllm库中代码有新增，需要按照“环境配置”安装指定版本vllm
+llm = LLM(model="../models/8b_sft_model/", tokenizer_mode="cpm", trust_remote_code=True)
+```
+
+### 部署OpenAI API服务推理
+vLLM可以为 LLM 服务进行部署，这里提供了一个示例：
+1. 启动服务：
+端侧2B模型：
+```shell
+python -m vllm.entrypoints.openai.api_server \
+       --model ../models/FM9G/ \
+       --tokenizer-mode auto \ 
+       --dtype auto \
+       --trust-remote-code \ 
+       --api-key CPMAPI
+
+# 与离线批量推理类似，使用端侧2B模型，tokenizer-mode为"auto"
+# dtype为模型数据类型，设置为"auto"即可
+# api-key为可选项，可在此处指定你的api密钥
+```
+8B百亿SFT模型：
+```shell
+python -m vllm.entrypoints.openai.api_server \
+       --model ../models/8b_sft_model/ \ 
+       --tokenizer-mode cpm \ 
+       --dtype auto \
+       --api-key CPMAPI
+
+# 与离线批量推理类似，使用8B百亿SFT模型，tokenizer-mode为"cpm"
+```
+
+执行对应指令后，默认在http://localhost:8000地址上启动服务，启动成功后终端会出现如下提示：
+```shell
+INFO:     Started server process [950965]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+```
+
+2. 调用API：
+启动服务端成功后，重新打开一个终端，可参考执行以下python脚本：
+``` python
+from openai import OpenAI
+
+# 如果启动服务时指定了api密钥，需要修改为对应的密钥，否则为"EMPTY"
+openai_api_key = "CPMAPI" 
+openai_api_base = "http://localhost:8000/v1"
+client = OpenAI(
+    api_key=openai_api_key,
+    base_url=openai_api_base,
+)
+completion = client.completions.create(model="../models/9G/",
+                                      prompt="San Francisco is a")
+print("Completion result:", completion)
+```
 
 ## 常见问题
 1. Conda安装pytorch时卡在solving environment：网络问题。
