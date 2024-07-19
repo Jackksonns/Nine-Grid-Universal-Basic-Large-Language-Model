@@ -495,7 +495,9 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 
 2. 调用API：
 启动服务端成功后，重新打开一个终端，可参考执行以下python脚本：
+
 ``` python
+# client.py
 from openai import OpenAI
 # 如果启动服务时指定了api密钥，需要修改为对应的密钥，否则为"EMPTY"
 openai_api_key = "CPMAPI" 
