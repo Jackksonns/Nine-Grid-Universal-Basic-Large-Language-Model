@@ -107,10 +107,10 @@ pip install tensorboardX
 
 
 8.安装vllm（模型推理）
-我们提供了python3.8、python3.10版本的vllm安装包，相关依赖均已封装，可直接安装后执行推理：
+我们提供python3.8、python3.10版本的vllm安装包，相关依赖均已封装，可直接安装后执行推理：
 [vllm-0.5.0.dev0+cu122-cp38-cp38-linux_x86_64.whl](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/vllm-0.5.0.dev0%2Bcu122-cp38-cp38-linux_x86_64.whl)
 [vllm-0.5.0.dev0+cu122-cp310-cp310-linux_x86_64.whl](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/vllm-0.5.0.dev0%2Bcu122-cp310-cp310-linux_x86_64.whl)
-同时，我们也提供了vllm源码,位于/quick_start_clean/tools/vllm-0.5.0.dev0.tar。
+同时，我们也提供了vllm源码,位于/quick_start_clean/tools/vllm-0.5.0.dev0.tar
 ```
 
 ## 开源模型
@@ -461,6 +461,7 @@ llm = LLM(model="../models/8b_sft_model/", tokenizer_mode="cpm", trust_remote_co
 ### 部署OpenAI API服务推理
 vLLM可以为 LLM 服务进行部署，这里提供了一个示例：
 1. 启动服务：
+
 端侧2B模型：
 ```shell
 python -m vllm.entrypoints.openai.api_server \
@@ -485,7 +486,6 @@ python -m vllm.entrypoints.openai.api_server \
 ```
 
 执行对应指令后，默认在http://localhost:8000地址上启动服务，启动成功后终端会出现如下提示：
-
 ```shell
 INFO:     Started server process [950965]
 INFO:     Waiting for application startup.
@@ -495,7 +495,6 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 
 2. 调用API：
 启动服务端成功后，重新打开一个终端，可参考执行以下python脚本：
-
 ``` python
 from openai import OpenAI
 # 如果启动服务时指定了api密钥，需要修改为对应的密钥，否则为"EMPTY"
