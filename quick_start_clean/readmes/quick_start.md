@@ -81,7 +81,7 @@ conda activate fm-9g
 # 需要先查看CUDA版本，根据CUDA版本挑选合适的pytorch版本
 conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cuda=11.6 -c pytorch -c nvidia
 
-9.安装OpenDelta
+4.安装OpenDelta
 # 也可以在官网上下载好安装包后进行安装
 # 官网地址为：https://github.com/thunlp/OpenDelta
 pip install opendelta
@@ -89,10 +89,10 @@ pip install opendelta
 5. 安装BMTrain
 pip install bmtrain==1.0.0 
 
-5. 安装flash-attn
+6. 安装flash-attn
 pip install flash-attn==2.4.2  
 
-6. 安装其他依赖包
+7. 安装其他依赖包
 pip install einops
 pip install pytrie
 pip install transformers
@@ -100,13 +100,13 @@ pip install matplotlib
 pip install h5py
 pip install sentencepiece
 
-7.安装tensorboard
+8.安装tensorboard
 pip install protobuf==3.20.0 #protobuf版本过高时无法适配tensorboard
 pip install tensorboard
 pip install tensorboardX
 
 
-8.安装vllm（模型推理）
+9.安装vllm（模型推理）
 我们提供python3.8、python3.10版本的vllm安装包，相关依赖均已封装，可直接安装后执行推理：
 [vllm-0.5.0.dev0+cu122-cp38-cp38-linux_x86_64.whl](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/vllm-0.5.0.dev0%2Bcu122-cp38-cp38-linux_x86_64.whl)
 [vllm-0.5.0.dev0+cu122-cp310-cp310-linux_x86_64.whl](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/vllm-0.5.0.dev0%2Bcu122-cp310-cp310-linux_x86_64.whl)
@@ -115,10 +115,10 @@ pip install tensorboardX
 
 ## 开源模型
 1. 8B的百亿SFT模型，v2版本是在v1基础上精度和对话能力的优化模型，下载链接：
- [8b_sft_model_v1](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/checkpoints-epoch-1.tar.gz), [8b_sft_model_v2](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/sft_8b_v2.zip)
+[8b_sft_model_v2(.pt格式)](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/sft_8b_v2.zip), [8b_sft_model_v2(.bin格式)](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/8b_sft_model.tar)
 
 2. 端侧2B模型，下载链接：
-[2b_sft_model](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/fm9g_2b_hf_models.tar.gz)
+[2b_sft_model(.pt格式)](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/fm9g_2b_hf_models.tar.gz), [2b_sft_model(.bin格式)](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/2b_sft_model.tar)
 
 ## 数据处理流程
 ### 单个数据集处理
@@ -432,7 +432,7 @@ prompts = [
 # temperature越大，生成结果的随机性越强，top_p过滤掉生成词汇表中概率低于给定阈值的词汇，控制随机性
 sampling_params = SamplingParams(temperature=0.8, top_p=0.95)
 
-# 初始化语言模型
+# 初始化语言模型,需注意加载的是.bin格式模型
 llm = LLM(model="../models/9G/", trust_remote_code=True)
 
 # 根据提示生成文本
@@ -449,7 +449,7 @@ for output in outputs:
 端侧2B模型：
 ``` python
 # 初始化语言模型，与Hugging Face Transformers库兼容，支持AWQ、GPTQ和GGUF量化格式转换
-llm = LLM(model="../models/FM9G/", tokenizer_mode="auto", trust_remote_code=True)
+llm = LLM(model="../models/2b_sft_model/", tokenizer_mode="auto", trust_remote_code=True)
 ```
 8B百亿SFT模型：
 ``` python
@@ -465,11 +465,12 @@ vLLM可以为 LLM 服务进行部署，这里提供了一个示例：
 端侧2B模型：
 ```shell
 python -m vllm.entrypoints.openai.api_server \
-       --model ../models/FM9G/ \
+       --model ../models/2b_sft_model/ \
        --tokenizer-mode auto \ 
        --dtype auto \
        --trust-remote-code \ 
        --api-key CPMAPI
+#同样需注意模型加载的是.bin格式
 #与离线批量推理类似，使用端侧2B模型，tokenizer-mode为"auto"
 #dtype为模型数据类型，设置为"auto"即可
 #api-key为可选项，可在此处指定你的api密钥
