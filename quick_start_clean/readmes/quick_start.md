@@ -458,6 +458,13 @@ llm = LLM(model="../models/2b_sft_model/", tokenizer_mode="auto", trust_remote_c
 llm = LLM(model="../models/8b_sft_model/", tokenizer_mode="cpm", trust_remote_code=True)
 ```
 
+如果想使用多轮对话,需要指定对应的聊天模版,修改prompts,每次将上一轮的问题和答案拼接到本轮输入即可：
+``` python
+prompts = [
+        "<用户>问题1<AI>答案1<用户>问题2<AI>答案2<用户>问题3<AI>"
+        ]
+```
+
 ### 部署OpenAI API服务推理
 vLLM可以为 LLM 服务进行部署，这里提供了一个示例：
 1. 启动服务：
@@ -494,7 +501,7 @@ INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 ```
 
-2. 调用API：
+2. 调用推理API：
 启动服务端成功后，重新打开一个终端，可参考执行以下python脚本：
 
 ``` python
@@ -510,6 +517,30 @@ client = OpenAI(
 completion = client.completions.create(model="../models/9G/",
                                       prompt="San Francisco is a")
 print("Completion result:", completion)
+```
+
+3. 调用多轮对话API：
+启动服务端成功后，重新打开一个终端，可参考执行以下python脚本：
+
+``` python
+# chat_client.py
+from openai import OpenAI
+client = OpenAI(
+    base_url="http://localhost:8000/v1",
+    api_key="CPMAPI",
+)
+#每次将上一轮的问题和答案拼接到本轮输入即可
+completion = client.chat.completions.create(
+  model="../models/9G/",
+  messages=[
+    {"role": "user", "content": "问题1"},
+    {"role": "system", "content": "答案1"},
+    {"role": "user", "content": "问题2"},
+    {"role": "system", "content": "答案2"},
+    {"role": "user", "content": "问题3"},
+  ]
+)
+print(completion.choices[0].message)
 ```
 
 ## 常见问题
