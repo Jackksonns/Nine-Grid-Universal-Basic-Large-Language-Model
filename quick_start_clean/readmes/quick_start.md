@@ -126,7 +126,7 @@ dockr load -i 9g.0.0.13.tar
 docker tag 【IMAGE ID】9g:0.0.13
 
 3 启动镜像
-docker run -it -d -v [HOST_PATH1]:[DOCKER_PATH1] -v [HOST_PATH2]:[DOCKER_PATH2] --gpus all --shm-size=50g --network host cpmlive-flash:0.0.4 bash
+docker run -it -d -v [HOST_PATH1]:[DOCKER_PATH1] -v [HOST_PATH2]:[DOCKER_PATH2] --gpus all --shm-size=50g --network host 9g:0.0.13 bash
 
 4 进入镜像：
 docker exec -it 【CONTAINER ID】 /bin/bash
