@@ -603,8 +603,6 @@ class MixedIndexedDataset(torch.utils.data.IterableDataset):
                 idx = np.random.choice(len(self.weights), p=self.weights)
 
             data = next(self.tasks[idx])
-            if step % self.update_weights_frequency == 0:
-                self.update_weights()
             if data is None:
                 if self.tasks[idx].allow_repeat:
                     # _runtime_ave = self.tasks[idx].ave_tokens
@@ -619,6 +617,9 @@ class MixedIndexedDataset(torch.utils.data.IterableDataset):
                     self.tasks[idx].exhaust = True
                     self.remain -= 1
                 continue
+
+            if step % self.update_weights_frequency == 0:
+                self.update_weights()
             step += 1
 
             return dict(

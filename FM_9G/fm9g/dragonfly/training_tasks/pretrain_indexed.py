@@ -618,6 +618,9 @@ class MixedIndexedDataset(torch.utils.data.IterableDataset):
                     self.tasks[idx].exhaust = True
                     self.remain -= 1
                 continue
+            
+            if step % self.update_weights_frequency == 0:
+                self.update_weights()
             step += 1
             return dict(
                 task_id=idx,

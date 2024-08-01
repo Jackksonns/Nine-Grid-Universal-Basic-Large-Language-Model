@@ -70,6 +70,7 @@
 ``` -->
 
 ## 环境配置
+### conda 环境安装
 ```shell
 1. 使用python 3.8.10创建conda环境
 conda create -n fm-9g python=3.8.10
@@ -111,6 +112,27 @@ pip install tensorboardX
 [vllm-0.5.0.dev0+cu122-cp38-cp38-linux_x86_64.whl](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/vllm-0.5.0.dev0%2Bcu122-cp38-cp38-linux_x86_64.whl)
 [vllm-0.5.0.dev0+cu122-cp310-cp310-linux_x86_64.whl](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/vllm-0.5.0.dev0%2Bcu122-cp310-cp310-linux_x86_64.whl)
 同时，我们也提供了vllm源码,位于/quick_start_clean/tools/vllm-0.5.0.dev0.tar
+```
+### docker环境
+
+我们提供了打包好的镜像，[镜像下载](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/9g.0.0.13.tar)
+镜像使用方法：
+``` shell
+1 启动镜像权限，有root权限
+systemctl start docker
+
+2 加载镜像
+dockr load -i 9g.0.0.13.tar
+docker tag 【IMAGE ID】9g:0.0.13
+
+3 启动镜像
+docker run -it -d -v [HOST_PATH1]:[DOCKER_PATH1] -v [HOST_PATH2]:[DOCKER_PATH2] --gpus all --shm-size=50g --network host cpmlive-flash:0.0.4 bash
+
+4 进入镜像：
+docker exec -it 【CONTAINER ID】 /bin/bash
+
+5 退出镜像
+CTRP + d
 ```
 
 ## 开源模型
