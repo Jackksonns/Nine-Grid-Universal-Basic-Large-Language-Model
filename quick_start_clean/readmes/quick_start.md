@@ -140,7 +140,7 @@ CTRP + d
 [8b_sft_model_v2(.pt格式)](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/sft_8b_v2.zip), [8b_sft_model_v2(.bin格式)](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/8b_sft_model.tar)
 
 2. 端侧2B模型，下载链接：
-[2b_sft_model(.pt格式)](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/fm9g_2b_hf_models.tar.gz), [2b_sft_model(.bin格式)](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/2b_sft_model.tar)
+[2b_sft_model(.pt格式)](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/sft_2b.tar), [2b_sft_model(.bin格式)](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/2b_sft_model.tar)
 
 ## 数据处理流程
 ### 单个数据集处理
