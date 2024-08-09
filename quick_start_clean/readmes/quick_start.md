@@ -52,6 +52,7 @@
   - [多机训练](#多机训练)
   - [参数详细介绍](#参数详细介绍)
   - [查看训练情况](#查看训练情况)
+  - [模型格式转换](#模型格式转换)
   - [模型推理](#模型推理)
   - [常见问题](#常见问题)
 
@@ -433,6 +434,21 @@ tensorboard –-logdir /apps/fm9g_2b/data/tensorboard/2b_0701 #存放.events文�
 TypeError: MessageToJson() got an unexpected keyword argument 'including_default_value_fields'
 ```
 
+## 模型格式转换
+模型训练完成后，需将pt格式模型文件转换为bin格式模型文件用于模型推理。
+我们在本项目中提供了2B模型两种格式相互转换时所用到脚本，脚本位于./quick_start_clean/convert_hf_fm9g.py，应用方法如下：
+
+```shell
+python convert_hf_fm9g.py \
+--model_path /the_path_to_pt_or_bin/ \ #需要转换模型的路径
+--output_path /the_path_to_target_directory/ \ #转换后新格式模型所存放路径
+--model_type fm9g \ #2B模型指定fm9g
+--task pt2bin  #任务类型如果pt模型转换为bin模型指定为pt2bin，反之指定为bin2pt
+```
+
+8B模型格式转换脚本需要切换至master分支，脚本位于本项目master分支下convert.py。
+
+
 ## 模型推理
 模型推理列举了两种推理方法：离线批量推理和部署OpenAI API服务推理
 
@@ -498,7 +514,7 @@ python -m vllm.entrypoints.openai.api_server \
        --tokenizer-mode auto \ 
        --dtype auto \
        --trust-remote-code \ 
-       --api-key CPMAPI
+       --api-key FM9GAPI
 #同样需注意模型加载的是.bin格式
 #与离线批量推理类似，使用端侧2B模型，tokenizer-mode为"auto"
 #dtype为模型数据类型，设置为"auto"即可
@@ -511,7 +527,7 @@ python -m vllm.entrypoints.openai.api_server \
        --model ../models/8b_sft_model/ \ 
        --tokenizer-mode cpm \ 
        --dtype auto \
-       --api-key CPMAPI
+       --api-key FM9GAPI
 #与离线批量推理类似，使用8B百亿SFT模型，tokenizer-mode为"cpm"
 ```
 
@@ -530,7 +546,7 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 # client.py
 from openai import OpenAI
 # 如果启动服务时指定了api密钥，需要修改为对应的密钥，否则为"EMPTY"
-openai_api_key = "CPMAPI" 
+openai_api_key = "FM9GAPI" 
 openai_api_base = "http://localhost:8000/v1"
 client = OpenAI(
     api_key=openai_api_key,
@@ -549,7 +565,7 @@ print("Completion result:", completion)
 from openai import OpenAI
 client = OpenAI(
     base_url="http://localhost:8000/v1",
-    api_key="CPMAPI",
+    api_key="FM9GAPI",
 )
 #每次将上一轮的问题和答案拼接到本轮输入即可
 completion = client.chat.completions.create(
