@@ -5,12 +5,18 @@
 ## 最新消息
 - 本次启元九格开源两个参数级别模型，分别是百亿级通用基础大模型为8B（80亿）和端侧模型2B（20亿参数）具体的模型训练、推理等内容见：[QUICK START](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/quick_start_clean/readmes/quick_start.md)
 - 若还在使用旧版本的九格模型训练和推理，请切换分支到[master](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md)
+                                    
+                                    
+## 0819 Notice
+- 由于新架构中多数据集验证发现2B模型进行lora训练效果不及全参数微调，
+- 2B模型采用全参数微调训练，我们在[QUICK START](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/quick_start_clean/readmes/quick_start.md) 中更新了更多关于微调训练的信息
+- 8B模型LORA微调在master分支进行
 
 ## 版本更新内容
  具体的迭代信息如下：                                                                               
 - 训练：升级了训练代码，提升GPU利用率和并行化，并且2B模型能兼容transformers中的tokenizer(LlamaTokenizerFast)
 - 推理：支持vllm进行模型推理和部署，可以接入langchain、openai等部署方式；同时可以将端侧模型可以支持GGUF等多种部署格式的部署
-- LORA代码暂未实现至新版本代码框架中，预计八月份完成，若需要LORA训练，请切换分支至master
+- 由于新架构中多数据集验证发现2B模型进行lora训练效果不及全参数微调，因此建议2B模型全参数微调，8B模型LORA微调在master分支进行
                            
 
 # 迈向通用智能的大模型技术系列课程
