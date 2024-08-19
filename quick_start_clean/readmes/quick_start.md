@@ -52,6 +52,7 @@
   - [多机训练](#多机训练)
   - [参数详细介绍](#参数详细介绍)
   - [查看训练情况](#查看训练情况)
+  - [模型微调](#模型微调)
   - [模型格式转换](#模型格式转换)
   - [模型推理](#模型推理)
   - [常见问题](#常见问题)
@@ -434,6 +435,27 @@ tensorboard –-logdir /apps/fm9g_2b/data/tensorboard/2b_0701 #存放.events文�
 TypeError: MessageToJson() got an unexpected keyword argument 'including_default_value_fields'
 ```
 
+## 模型微调
+模型微调列举了两种微调方法：全参数微调以及LORA微调。
+
+### 全参数微调训练：
+全参数微调训练与原始模型训练方法基本一致，需要额外注意以下几点：
+1.数据集类型
+训练数据集通常包含大量、多样化的数据，覆盖广泛的主题和语言现象，用于学习广泛的知识和技能。通过无监督学习，训练数据集可能不包含显式标签，模型通过预测下一个词或填补缺失词语来学习模式。
+微调数据集更专注于特定的领域或任务，通常是有标签的，并且标签与目标任务直接相关。例如，微调分类模型时，数据集中的每条数据都有对应的分类标签；微调翻译模型时，数据集中包含源语言和目标语言的句子对。
+需要根据具体微调任务设计与选择合适的微调数据集。
+
+2.预训练模型的引入
+修改训练脚本参数文件：/apps/fm9g_2b/pretrain_dragonfly.sh，引入args["load"]参数，里面补充基于微调的预训练模型的路径即可：
+```python
+#基于微调的预训练模型路径
+args["load"]="../models/sft_2b/"
+```
+
+### LORA微调训练：
+由于新架构中多数据集验证发现2B模型进行LORA训练效果不及全参数微调，因此建议2B模型全参数微调，8B模型LORA微调在master分支进行。
+
+
 ## 模型格式转换
 模型训练完成后，需将pt格式模型文件转换为bin格式模型文件用于模型推理。
 我们在本项目中提供了2B模型两种格式相互转换时所用到脚本，脚本位于./quick_start_clean/convert_hf_fm9g.py，应用方法如下：
@@ -539,6 +561,14 @@ INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 ```
 
+部署阶段部分参数说明：
+```shell
+1.openai暂不支持配置--repetition_penalty参数。
+2.如发生OOM（内存溢出）问题，可修改相关参数，在启动服务时一并传入:
+--max-model-len，默认最大位置嵌入（max_position_embedding）为32768，可以修改为4096。
+--gpu-memory-utilization，默认该值为0.9，因此占用显存比较高，2B模型可修改为0.2，8B模型可修改为0.5。
+```
+
 2. 调用推理API：
 启动服务端成功后，重新打开一个终端，可参考执行以下python脚本：
 
@@ -552,8 +582,15 @@ client = OpenAI(
     api_key=openai_api_key,
     base_url=openai_api_base,
 )
-completion = client.completions.create(model="../models/9G/",
-                                      prompt="San Francisco is a")
+#指定模型路径，推理prompt以及设置采样参数以控制生成文本
+completion_params = {
+    "model": "../models/9G/",
+    "prompt": "San Francisco is a",
+    "temperature": 0.8,
+    "top_p": 0.95,
+    "max_tokens": 200
+}
+completion = client.completions.create(**completion_params)
 print("Completion result:", completion)
 ```
 
