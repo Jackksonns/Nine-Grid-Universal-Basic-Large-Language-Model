@@ -10,8 +10,11 @@
 - 由于新架构中多数据集验证发现2B模型进行lora训练效果不及全参数微调
 - 2B模型采用全参数微调训练，我们在[QUICK START](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/quick_start_clean/readmes/quick_start.md) 中更新了更多关于微调训练的信息
 - 8B模型LORA微调在master分支进行训练
+
+ 
+                                
 ## 版本更新内容
- 具体的迭代信息如下：                                                                               
+  具体的迭代信息如下：                                                                               
 - 训练：升级了训练代码，提升GPU利用率和并行化，并且2B模型能兼容transformers中的tokenizer(LlamaTokenizerFast)
 - 推理：支持vllm进行模型推理和部署，可以接入langchain、openai等部署方式；同时可以将端侧模型可以支持GGUF等多种部署格式的部署
 - 由于新架构中多数据集验证发现2B模型进行lora训练效果不及全参数微调，因此建议2B模型全参数微调，8B模型LORA微调在master分支进行                           
