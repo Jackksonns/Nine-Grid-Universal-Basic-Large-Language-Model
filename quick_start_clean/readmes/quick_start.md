@@ -110,9 +110,11 @@ pip install tensorboardX
 
 
 9.安装vllm（模型推理）
-我们提供python3.8、python3.10版本的vllm安装包，相关依赖均已封装，可直接安装后执行推理：
+我们提供基于CUDA12.2环境下python3.8、python3.10版本的vllm安装包，相关依赖均已封装，可直接安装后执行推理：
 [vllm-0.5.0.dev0+cu122-cp38-cp38-linux_x86_64.whl](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/vllm-0.5.0.dev0%2Bcu122-cp38-cp38-linux_x86_64.whl)
 [vllm-0.5.0.dev0+cu122-cp310-cp310-linux_x86_64.whl](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/vllm-0.5.0.dev0%2Bcu122-cp310-cp310-linux_x86_64.whl)
+针对CUDA版本不高的用户，我们提供了兼容低版本CUDA的vllm安装包，但经测试最低支持CUDA11.6，因此，如果您的服务器CUDA版本低于11.6，请先将其升级至该版本以上，以确保兼容性和正常运行：
+[vllm-0.5.0.dev0+cu116-cp38-cp38-linux_x86_64.whl](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/vllm-0.5.0.dev0%2Bcu116-cp38-cp38-linux_x86_64.whl)
 同时，我们也提供了vllm源码,位于/quick_start_clean/tools/vllm-0.5.0.dev0.tar
 ```
 ### docker环境
