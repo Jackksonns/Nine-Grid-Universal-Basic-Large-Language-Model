@@ -107,9 +107,10 @@ pip install sentencepiece
 pip install protobuf==3.20.0 #protobuf版本过高时无法适配tensorboard
 pip install tensorboard
 pip install tensorboardX
-
-
-9.安装vllm（模型推理）
+```
+### 推理环境安装
+```
+装vllm（模型推理）
 我们提供基于CUDA12.2环境下python3.8、python3.10版本的vllm安装包，相关依赖均已封装，可直接安装后执行推理：
 [vllm-0.5.0.dev0+cu122-cp38-cp38-linux_x86_64.whl](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/vllm-0.5.0.dev0%2Bcu122-cp38-cp38-linux_x86_64.whl)
 [vllm-0.5.0.dev0+cu122-cp310-cp310-linux_x86_64.whl](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/vllm-0.5.0.dev0%2Bcu122-cp310-cp310-linux_x86_64.whl)
