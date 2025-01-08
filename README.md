@@ -3,8 +3,8 @@
 启元九格大模型由启元实验室牵头，联合清华大学、哈尔滨工业大学、中国科学院计算技术研究所、北京大学、南开大学等优势单位共同研制。具有高效训练与推理和高效适配与部署的技术特点，具备文本问答、文本分类、机器翻译、文本摘要等自然语言处理能力。
 
 ## 更新信息
-- <span style="color: #D32F2F">本次启元九格开源13B多模态基础大模型，具体的模型推理等内容见：[QUICK START](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM9G-V/quick_start_clean/readmes/quick_start.md)</span>
-- 本次启元九格开源两个参数级别模型，分别是百亿级通用基础大模型为8B（80亿）和端侧模型2B（20亿参数）具体的模型训练、推理等内容见：[QUICK START](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/quick_start_clean/readmes/quick_start.md)
+- <span style="color: #D32F2F">本次启元九格开源13B多模态基础大模型，具体的模型推理等内容见：[FM9G-V](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM9G-V/quick_start_clean/readmes/quick_start.md)</span>
+- 本次启元九格开源两个参数级别模型，分别是百亿级通用基础大模型为8B（80亿）和端侧模型2B（20亿参数）具体的模型训练、推理等内容见：[FM9G](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/quick_start_clean/readmes/quick_start.md)
 - 若还在使用旧版本的九格模型训练和推理，请切换分支到[master](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/master/quick_start_clean/readmes/README_ALL.md)
                                     
 ## 版本更新内容
