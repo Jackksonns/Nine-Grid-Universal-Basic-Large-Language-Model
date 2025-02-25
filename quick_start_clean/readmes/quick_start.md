@@ -149,6 +149,9 @@ CTRP + d
 2. 端侧2B模型，下载链接：
 [2b_sft_model(.pt格式)](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/sft_2b.tar), [2b_sft_model(.bin格式)](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/2b_sft_model.tar)
 
+3. 4B模型，下载链接：
+[4b_sft_model(.bin格式)](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/9G4B.tar)
+
 ## 数据处理流程
 ### 单个数据集处理
 预训练语料为无监督形式，不需要区分问题与答案，但需要将数据转为index后进行模型训练。我们拿到的原始数据可能是两种形式：

@@ -13,6 +13,7 @@
 - **推理**：支持 **单图文推理**。   
 
 ### 🚀 历史更新（2024.08.19）：[**FM9G**](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/quick_start_clean/readmes/quick_start.md)
+- **4B 模型** 与2B模型的结构相同，可以使用正常的sft训练数据。
 - **2B 模型** 经过多数据集验证，发现 **LoRA 训练效果不及全参数微调**，因此 2B 采用 **全参数微调** 训练。  
 - **8B 模型** LoRA 微调仍在 **master 分支** 进行训练。  
 - **QUICK START** 中更新了 **2B 全参数微调** 的详细信息。 
