@@ -7,8 +7,8 @@
 
 ## 更新信息  
 
-### 🔥 **最新发布（2025.02.25）**：[**FM9G 4B 模型**](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/quick_start_clean/readmes/quick_start.md)
-- **模型**：[**4B 模型**](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/9G4B.tar)，将上下文长度扩展至32k，并采用了GPQ结构以降低KV缓存需求。
+### 🔥 **最新发布（2025.02.25）**：[**FM9G**](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/quick_start_clean/readmes/quick_start.md)
+- **模型**：[**4B 模型**](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/9G4B.tar)将上下文长度扩展至32k支持长文推理，并采用了GQA结构以降低KV cache的显存需求。
 - **训练**：训练代码将即将开源。
 - **推理**：推理代码可以直接复用2.4B模型。
 
