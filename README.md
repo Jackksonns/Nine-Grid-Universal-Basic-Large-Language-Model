@@ -7,16 +7,19 @@
 
 ## 更新信息  
 
-### 🔥 最新版本（2025.01.12）：[**FM9G-V**](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM9G-V/quick_start_clean/readmes/quick_start.md)
-- **模型**：**13B 多模态基础大模型**，支持 **单图文推理**。  
-- **训练**：开源了 **多模态基础大模型** 的训练代码。  
-- **推理**：支持 **单图文推理**。   
+### 🔥 **最新发布（2025.02.27）**：[**FM9G 4B 模型**](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM9G-V/quick_start_clean/readmes/quick_start.md)
+- **模型**：**4B 模型**，与2B模型结构相同，支持正常的SFT训练数据，具备一定的NLP处理能力。
+- **发布日期**：2025年2月27日，作为FM9G系列的最新发布版本，优化了前期版本的模型结构和性能。
+  
+> 🚨 **FM9G 4B模型** 是2025年2月27日发布的最新版本，提供了与2B模型相同的结构，但在处理能力上有所增强，适用于多种NLP任务，支持正常的SFT训练数据。
 
-### 🚀 历史更新（2024.08.19）：[**FM9G**](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/quick_start_clean/readmes/quick_start.md)
-- **4B 模型** 与2B模型的结构相同，可以使用正常的sft训练数据。
-- **2B 模型** 经过多数据集验证，发现 **LoRA 训练效果不及全参数微调**，因此 2B 采用 **全参数微调** 训练。  
-- **8B 模型** LoRA 微调仍在 **master 分支** 进行训练。  
-- **QUICK START** 中更新了 **2B 全参数微调** 的详细信息。 
+---
+
+### 🚀 **历史版本更新**  
+#### **2025.01.12**：[**FM9G-V**](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM9G-V/quick_start_clean/readmes/quick_start.md)
+- **模型**：**13B 多模态基础大模型**，支持 **单图文推理**。
+- **训练**：开源了 **多模态基础大模型** 的训练代码。
+- **推理**：支持 **单图文推理**，提升了图文理解和生成能力。
 
 ---
 
