@@ -7,10 +7,13 @@
 
 ## 更新信息  
 
-### 🔥 **最新发布（2025.02.25）**：[**FM9G**](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/quick_start_clean/readmes/quick_start.md)
-- **模型**：[**4B 模型**](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/9G4B.tar)，4B模型主要将上下文长度扩增至32k，其模型结构和2B基本无差别，训练和推理直接参考2B模型的即可。
-  
-> 🚨 **FM9G 4B模型** 是一款长上下文处理模型，支持 32k+ 的文本窗口，可以通过搭载 [MapReduce](https://github.com/thunlp/LLMxMapReduce/tree/main)能力，能够处理超过 100k 的上下文。该模型还支持工具调用和代码解释功能，具备卓越的数学推理能力以及中英文指令执行能力，能够有效处理复杂任务。
+### 🔥 **最新发布（2025.02.25）**：[**FM9G 4B 模型**](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/quick_start_clean/readmes/quick_start.md)
+- **模型**：[**4B 模型**](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/9G4B.tar)，将上下文长度扩展至32k，并采用了GPQ结构以降低KV缓存需求。
+- **训练**：训练代码将即将开源。
+- **推理**：推理代码可以直接复用2.4B模型。
+
+> 🚨 **FM9G 4B模型** 是一款专为长上下文处理设计的模型，支持32k+的文本窗口，并通过搭载[MapReduce](https://github.com/thunlp/LLMxMapReduce/tree/main)能力，能够处理超过100k的上下文。该模型还支持工具调用和代码解释，具备卓越的数学推理能力和中英文指令执行能力，能够高效处理复杂任务。
+
 
 ---
 
