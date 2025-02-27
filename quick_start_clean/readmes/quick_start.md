@@ -142,15 +142,24 @@ docker exec -it 【CONTAINER ID】 /bin/bash
 CTRP + d
 ```
 
-## 开源模型
-1. 8B的百亿SFT模型，v2版本是在v1基础上精度和对话能力的优化模型，下载链接：
-[8b_sft_model_v2(.pt格式)](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/sft_8b_v2.zip), [8b_sft_model_v2(.bin格式)](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/8b_sft_model.tar)
+## 模型下载
 
-2. 端侧2B模型，下载链接：
-[2b_sft_model(.pt格式)](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/sft_2b.tar), [2b_sft_model(.bin格式)](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/2b_sft_model.tar)
+1. **8B 百亿SFT模型 v2版本**  
+   - 该版本是在v1基础上优化了精度和对话能力。
+   - 下载链接：  
+     - [8b_sft_model_v2 (.pt格式)](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/sft_8b_v2.zip)  
+     - [8b_sft_model_v2 (.bin格式)](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/8b_sft_model.tar)
 
-3. 4B模型，下载链接：
-[4b_sft_model(.bin格式)](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/9G4B.tar)
+2. **端侧 2B 模型**  
+   - 该版本适用于端侧应用，优化了计算性能和推理效率。
+   - 下载链接：  
+     - [2b_sft_model (.pt格式)](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/sft_2b.tar)  
+     - [2b_sft_model (.bin格式)](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/2b_sft_model.tar)
+
+3. **4B 模型**  
+   - 下载链接：  
+     - [4b_sft_model (.bin格式)](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/9G4B.tar)
+
 
 ## 数据处理流程
 ### 单个数据集处理
