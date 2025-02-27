@@ -7,11 +7,10 @@
 
 ## 更新信息  
 
-### 🔥 **最新发布（2025.02.27）**：[**FM9G 4B 模型**](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM9G-V/quick_start_clean/readmes/quick_start.md)
+### 🔥 **最新发布（2025.02.25）**：[**FM9G 4B 模型**](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/quick_start_clean/readmes/quick_start.md)
 - **模型**：**4B 模型**，与2B模型结构相同，支持正常的SFT训练数据，具备一定的NLP处理能力。
-- **发布日期**：2025年2月27日，作为FM9G系列的最新发布版本，优化了前期版本的模型结构和性能。
   
-> 🚨 **FM9G 4B模型** 是2025年2月27日发布的最新版本，提供了与2B模型相同的结构，但在处理能力上有所增强，适用于多种NLP任务，支持正常的SFT训练数据。
+> 🚨 **FM9G 4B模型** 是一款长上下文处理模型，支持 32k+ 的文本窗口，可以通过搭载 [MapReduce](https://github.com/thunlp/LLMxMapReduce/tree/main)能力，能够处理超过 100k 的上下文。该模型还支持工具调用和代码解释功能，具备卓越的数学推理能力以及中英文指令执行能力，能够有效处理复杂任务。
 
 ---
 
@@ -21,6 +20,10 @@
 - **训练**：开源了 **多模态基础大模型** 的训练代码。
 - **推理**：支持 **单图文推理**，提升了图文理解和生成能力。
 
+#### **2024.08.19**：[**FM9G**](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/quick_start_clean/readmes/quick_start.md)
+- **2B 模型**：经过多数据集验证，发现 **LoRA训练效果不及全参数微调**，因此 **2B模型采用了全参数微调**，效果显著提升。
+- **8B 模型**：LoRA微调仍在 **master 分支** 进行，正在进行更细致的优化。
+- **QUICK START**：更新了 **2B 全参数微调** 的详细信息，帮助用户更好地理解和应用该模型。
 ---
 
 ### 📚 其他信息
