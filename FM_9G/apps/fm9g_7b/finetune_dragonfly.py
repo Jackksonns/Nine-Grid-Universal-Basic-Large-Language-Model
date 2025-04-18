@@ -554,11 +554,11 @@ def main():
     bmt.synchronize()
     tokenizer, model, optimizer, lr_scheduler = setup_model_and_optimizer(args)
     bmt.print_rank("finish loading")
-    bmt.print_rank(
-        "Number of parameter {}, Number of non-e parameter {}".format(
-            num_parameters(model), num_non_embedding_parameters(model)
-        )
-    )
+    # bmt.print_rank(
+    #     "Number of parameter {}, Number of non-e parameter {}".format(
+    #         num_parameters(model), num_non_embedding_parameters(model)
+    #     )
+    # )
     bmt.print_rank("args: {}".format(args))
 
     pretrain(args, tokenizer, model, optimizer, lr_scheduler)
