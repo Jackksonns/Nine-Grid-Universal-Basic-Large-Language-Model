@@ -17,9 +17,9 @@
 
     |模型|模型下载链接|推理说明及示例代码|微调训练说明及示例代码|
     |----|-------|----------------|---|
-    |4B|[🔗点击此处下载](https://thunlp-model.oss-cn-wulanchabu.aliyuncs.com/9G4B.tar)|[📄点击此处阅读](./quick_start_4_7_70/inference_4b.md)|[🚆BMTrain微调](FM_9G\apps\fm9g_4b\README.md) / [🤗Transformers微调](FM_9G\apps\fm9g_4b_hf\README.md)|
-    |7B|[🔗点击此处下载](https://thunlp-model.oss-cn-wulanchabu.aliyuncs.com/9G7B_MHA.tar)|[📄点击此处阅读](./quick_start_4_7_70/inference_7b.md)|[🚆BMTrain微调](FM_9G\apps\fm9g_7b\README.md) / [🤗Transformers微调](FM_9G\apps\fm9g_7b_hf\README.md)|
-    |70B|[🔗点击此处下载](https://thunlp-model.oss-cn-wulanchabu.aliyuncs.com/FM9G_70B_SFT_MHA.tar)|[📄点击此处阅读](./quick_start_4_7_70/inference_70b.md)|[🚆BMTrain微调](FM_9G\apps\fm9g_70b\README.md) / [🤗Transformers微调](FM_9G\apps\fm9g_70b_hf\README.md)|
+    |4B|[🔗点击此处下载](https://thunlp-model.oss-cn-wulanchabu.aliyuncs.com/9G4B.tar)|[📄点击此处阅读](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/quick_start_4_7_70/inference_4b.md)|[🚆BMTrain微调](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/FM_9G/apps/fm9g_4b/README.md) / [🤗Transformers微调](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/FM_9G/apps/fm9g_4b_hf/README.md)|
+    |7B|[🔗点击此处下载](https://thunlp-model.oss-cn-wulanchabu.aliyuncs.com/9G7B_MHA.tar)|[📄点击此处阅读](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/quick_start_4_7_70/inference_7b.md)|[🚆BMTrain微调](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/FM_9G/apps/fm9g_7b/README.md) / [🤗Transformers微调](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/FM_9G/apps/fm9g_7b_hf/README.md)|
+    |70B|[🔗点击此处下载](https://thunlp-model.oss-cn-wulanchabu.aliyuncs.com/FM9G_70B_SFT_MHA.tar)|[📄点击此处阅读](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/quick_start_4_7_70/inference_70b.md)|[🚆BMTrain微调](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/FM_9G/apps/fm9g_70b/README.md) / [🤗Transformers微调](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/FM_9G/apps/fm9g_70b_hf/README.md)|
 
 
 ### 🚀 **历史版本更新**  
