@@ -1,0 +1,24 @@
+[
+    {
+        "dataset_name": "medical_o1_reasoning",
+        "task_name": "medical_o1_reasoning",
+        "abs_weight": 0.6,
+        "path": "../../data_test/indexed_data/medical_train",
+        "transforms": "./add_template.py",
+        "allow_repeat": true,
+        "nlines": 17278,
+        "ave_tokens_per_line": 351,
+        "total_tokens": 0.0006
+    },
+    {
+        "dataset_name": "ralpaca_zh",
+        "task_name": "ralpaca_zh",
+        "abs_weight": 0.4,
+        "path": "../../data_test/indexed_data/data_ralpaca_zh",
+        "transforms": "./script_cpmc.py",
+        "allow_repeat": true,
+        "nlines": 48818,
+        "ave_tokens_per_line": 204,
+        "total_tokens": 0.001
+    }
+]

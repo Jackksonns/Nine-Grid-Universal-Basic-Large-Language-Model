@@ -126,7 +126,7 @@ def export(
     args,
     log_ckpt=None,
     final_save=False,
-    async_save=False,
+    async_save=False
 ):
     """
     一次 ckpt 保存：
@@ -145,7 +145,10 @@ def export(
     """
 
     bmt.synchronize()
-    model_state = bmt.store._save_to_rank0(model)
+    if args.delta_tuning:
+        model_state = model.state_dict()
+    else:
+        model_state = bmt.store._save_to_rank0(model)
     opt_state = deepcopy(optimizer.state_dict())
     model_config = model.config
 
@@ -223,6 +226,7 @@ def _legacy_load_optimizer_ckpt(args, optimizer):
 def load_optimizer_ckpt(args, optimizer):
     if args.load.endswith(".pt"):
         optimizer_path = os.path.dirname(args.load)
+        return
     else:
         # a directory
         optimizer_path = args.load
@@ -264,6 +268,7 @@ def _load_dataloader_ckpt(args, mixed_dataset):
     """args.load 是一个到/{args.save}/job_{job_id}_ckpt_{global_step}/ 的路径"""
     if args.load.endswith(".pt"):
         load_path = os.path.dirname(args.load)
+        return
     else:
         load_path = args.load
     dataset_states_path = [file for file in os.listdir(load_path) if file.endswith(".data")]

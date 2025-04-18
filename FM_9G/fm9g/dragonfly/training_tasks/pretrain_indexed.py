@@ -14,22 +14,11 @@ import importlib
 import json
 import logging
 import os
+import string
 import random
-from collections import defaultdict
-from collections import OrderedDict
-from multiprocessing import Lock
-from multiprocessing import Process
+from collections import defaultdict, OrderedDict
 from multiprocessing.shared_memory import SharedMemory
-from typing import Any
-from typing import Callable
-from typing import Dict
 from typing import Iterable
-from typing import Iterator
-from typing import List
-from typing import Optional
-from typing import Set
-from typing import Tuple
-from typing import Union
 
 import bmtrain as bmt
 import numpy as np
@@ -282,21 +271,22 @@ class SegmentedDataset(torch.utils.data.IterableDataset):
         self.counter = 0
         self.allow_repeat = cfg.get("allow_repeat", True)
         self.used = BitSet()
+        self.shm_random_suffix = ''.join(random.choices(string.ascii_letters, k=4))
         self.init_ave_tokens()
-
+        
     def init_ave_tokens(
         self,
     ):
         try:
-            shm = SharedMemory(name=f'ave_tokens_{self.task_name.replace("/", "_")}_{bmt.rank()}')
+            shm = SharedMemory(name=f'ave_tokens_{self.task_name.replace("/", "_")}_{bmt.rank()}_{self.shm_random_suffix}')
         except FileNotFoundError:
             bmt.print_rank(
-                "Create Shared Memory {}".format(f'ave_tokens_{self.task_name.replace("/", "_")}_{bmt.rank()}')
+                "Create Shared Memory {}".format(f'ave_tokens_{self.task_name.replace("/", "_")}_{bmt.rank()}_{self.shm_random_suffix}')
             )
             shm = SharedMemory(
                 create=True,
                 size=ctypes.sizeof(ctypes.c_float),
-                name=f'ave_tokens_{self.task_name.replace("/", "_")}_{bmt.rank()}',
+                name=f'ave_tokens_{self.task_name.replace("/", "_")}_{bmt.rank()}_{self.shm_random_suffix}',
             )
 
         # 使用共享内存
@@ -326,7 +316,7 @@ class SegmentedDataset(torch.utils.data.IterableDataset):
         self,
     ):
         existing_shm = SharedMemory(
-            name=f'ave_tokens_{self.task_name.replace("/", "_")}_{bmt.rank()}'
+            name=f'ave_tokens_{self.task_name.replace("/", "_")}_{bmt.rank()}_{self.shm_random_suffix}'
         )  # -1 # default length
         shared_value = ctypes.c_float.from_buffer(existing_shm.buf)
         tmp = shared_value.value
@@ -336,7 +326,7 @@ class SegmentedDataset(torch.utils.data.IterableDataset):
 
     def ave_tokens_update(self, length):
         existing_shm = SharedMemory(
-            name=f'ave_tokens_{self.task_name.replace("/", "_")}_{bmt.rank()}'
+            name=f'ave_tokens_{self.task_name.replace("/", "_")}_{bmt.rank()}_{self.shm_random_suffix}'
         )  # -1 # default length
         shared_value = ctypes.c_float.from_buffer(existing_shm.buf)
         if shared_value.value < 0:

@@ -51,6 +51,7 @@ class DragonflyConfig(PretrainedConfig):
         orig_max_length=8192,
         tp=0,
         use_checkpoint=True,
+        qkv_bias=False,
         **kwargs,
     ):
         self.vocab_size = vocab_size
@@ -80,7 +81,7 @@ class DragonflyConfig(PretrainedConfig):
         self.max_length = max_length
         self.orig_max_length = orig_max_length
         self.use_checkpoint = use_checkpoint
-        print("use_checkpoint", self.use_checkpoint)
+        self.qkv_bias = qkv_bias
         self.tp = tp
         super().__init__(architectures=["fm9gDragonflyForCausalLM"])
 

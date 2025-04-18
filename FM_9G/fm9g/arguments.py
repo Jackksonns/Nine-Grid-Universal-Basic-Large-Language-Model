@@ -252,6 +252,10 @@ def add_finetune_args(parser: argparse.ArgumentParser):
     group.add_argument("--delta-tuning", action="store_true", default=False)
     group.add_argument("--each-epoch-save", default=False)
     group.add_argument("--train-task-id", type=int, default=-1)
+    group.add_argument("--lora-layer", type=str, default="['self_attention.project_q', 'self_attention.project_v']")
+    group.add_argument("--lora-r", type=int, default=32)
+    group.add_argument("--lora-alpha", type=int, default=64)
+    group.add_argument("--lora-dropout", type=float, default=0.1)
     return parser
 
 

@@ -231,6 +231,7 @@ class NormalLinear(bmt.DistributedModule):
         dtype: torch.dtype = torch.bfloat16,
         init_mean: float = 0.0,
         init_std: float = 0.02,
+        bias: bool = False
     ):
         super().__init__()
         self.dim_in = self.in_features = dim_in
@@ -243,6 +244,13 @@ class NormalLinear(bmt.DistributedModule):
             torch.empty((dim_out, dim_in), dtype=dtype),
             init_method=bmt.ParameterInitializer(torch.nn.init.normal_, mean=init_mean, std=init_std),
         )
+        if bias:
+            self.bias = bmt.DistributedParameter(
+                torch.empty(dim_out, dtype=dtype),
+                init_method=bmt.ParameterInitializer(torch.nn.init.normal_, mean=init_mean, std=init_std),
+            )
+        else:
+            self.bias = None
 
     def forward(self, x: torch.Tensor):
         """
@@ -252,7 +260,7 @@ class NormalLinear(bmt.DistributedModule):
             :obj:`torch.Tensor` of shape ``(batch, seq_len, dim_out)``: The output of the linear transform y.
         """  # noqa: E501
 
-        x = F.linear(x, self.weight, None)
+        x = F.linear(x, self.weight, self.bias)
 
         return x
 
@@ -573,6 +581,7 @@ class Attention(bmt.DistributedModule):
         init_std: float = 0.02,
         scale_width: float = 1.0,
         qk_norm: bool = False,
+        qkv_bias: bool = False
     ) -> None:
         super().__init__()
 
@@ -591,6 +600,7 @@ class Attention(bmt.DistributedModule):
             dtype=dtype,
             tp=tp,
             init_std=_std,
+            bias=qkv_bias
         )
         self.project_k = Linear(
             self.dim_model,
@@ -598,6 +608,7 @@ class Attention(bmt.DistributedModule):
             dtype=dtype,
             tp=tp,
             init_std=_std,
+            bias=qkv_bias
         )
         self.project_v = Linear(
             self.dim_model,
@@ -605,6 +616,7 @@ class Attention(bmt.DistributedModule):
             dtype=dtype,
             tp=tp,
             init_std=_std,
+            bias=qkv_bias
         )
 
         self.attention_out = Linear(
@@ -727,6 +739,7 @@ class SelfAttentionBlock(bmt.DistributedModule):
         qk_norm: bool = False,
         layer_id: int = 0,
         num_layers: int = 0,
+        qkv_bias: bool = False
     ):
         super().__init__()
 
@@ -748,6 +761,7 @@ class SelfAttentionBlock(bmt.DistributedModule):
             init_std=init_std,
             scale_width=scale_width,
             qk_norm=qk_norm,
+            qkv_bias=qkv_bias
         )
 
         if dropout_p:
@@ -915,6 +929,7 @@ class TransformerBlock(torch.nn.Module):
         qk_norm: bool = False,
         layer_id: int = 0,
         num_layers: int = 0,
+        qkv_bias: bool = False
     ):
         super().__init__()
 
@@ -934,6 +949,7 @@ class TransformerBlock(torch.nn.Module):
             qk_norm=qk_norm,
             layer_id=layer_id,
             num_layers=num_layers,
+            qkv_bias=qkv_bias
         )
 
         self.ffn = FFNBlock(
@@ -1018,6 +1034,7 @@ class Encoder(bmt.DistributedModule):
         scale_depth: float = -1,
         qk_norm: bool = False,
         use_checkpoint: bool = True,
+        qkv_bias: bool = False
     ):
         super().__init__()
         if num_kv_heads == -1:
@@ -1045,6 +1062,7 @@ class Encoder(bmt.DistributedModule):
                         qk_norm=qk_norm,
                         layer_id=layer_id,
                         num_layers=num_layers,
+                        qkv_bias=qkv_bias
                     ),
                     use_checkpoint=use_checkpoint
                 )
@@ -1104,6 +1122,7 @@ class Dragonfly(bmt.DistributedModule):
             scale_depth=config.scale_depth,
             qk_norm=config.qk_norm,
             use_checkpoint=config.use_checkpoint,
+            qkv_bias=config.qkv_bias
         )
 
         self.input_embedding = Embedding(

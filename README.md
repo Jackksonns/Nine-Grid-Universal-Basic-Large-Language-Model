@@ -7,17 +7,32 @@
 
 ## 更新信息  
 
-### 🔥 **最新发布（2025.02.25）**：[**FM9G**](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM_9G/quick_start_clean/readmes/quick_start.md)
+### 🔥 **最新发布（2025.04.18）**：
+
+- **模型**：开源了**4B、7B、70B**三种不同尺寸的基础语言模型，能力再上台阶。
+- **训练**：4B、7B、70B模型的**全参数微调和Lora微调**训练代码已经开源。
+- **推理**：支持原生**Huggingface Transformers**推理和**vllm**快速推理，环境配置方法和离线批量推理/在线多轮对话的示例代码均已开源。
+
+    模型下载链接和推理、微调训练的说明文档和对应示例代码可在下表链接中找到，对应推理环境和微调环境的配置方法也已放置在文档中：
+
+    |模型|模型下载链接|推理说明及示例代码|微调训练说明及示例代码|
+    |----|-------|----------------|---|
+    |4B|[🔗点击此处下载](https://thunlp-model.oss-cn-wulanchabu.aliyuncs.com/9G4B.tar)|[📄点击此处阅读](./quick_start_4_7_70/inference_4b.md)|[🚆BMTrain微调](FM_9G\apps\fm9g_4b\README.md) / [🤗Transformers微调](FM_9G\apps\fm9g_4b_hf\README.md)|
+    |7B|[🔗点击此处下载](https://thunlp-model.oss-cn-wulanchabu.aliyuncs.com/9G7B_MHA.tar)|[📄点击此处阅读](./quick_start_4_7_70/inference_7b.md)|[🚆BMTrain微调](FM_9G\apps\fm9g_7b\README.md) / [🤗Transformers微调](FM_9G\apps\fm9g_7b_hf\README.md)|
+    |70B|[🔗点击此处下载](https://thunlp-model.oss-cn-wulanchabu.aliyuncs.com/FM9G_70B_SFT_MHA.tar)|[📄点击此处阅读](./quick_start_4_7_70/inference_70b.md)|[🚆BMTrain微调](FM_9G\apps\fm9g_70b\README.md) / [🤗Transformers微调](FM_9G\apps\fm9g_70b_hf\README.md)|
+
+
+### 🚀 **历史版本更新**  
+
+#### **2025.02.25**：[**FM9G-4B**](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM9G-V/quick_start_clean/readmes/quick_start.md)
+
 - **模型**：[**4B 模型**](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/9G4B.tar)将上下文长度扩展至32k支持长文推理，并采用了GQA结构以降低KV cache的显存需求。
-- **训练**：训练代码将即将开源。
+- **训练**：训练代码将即将开源。（2025.04.18更新：训练代码已开源）
 - **推理**：推理代码可以直接复用2.4B模型。增加了[2.4B模型](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/gguf/fm9g-2b-q4_k_m.gguf)和[4B模型](https://qy-obs-6d58.obs.cn-north-4.myhuaweicloud.com/gguf/fm9g-4b-q4_k_m.gguf)的q4_k_m量化版gguf模型。
 
 > 🚨 **FM9G 4B模型** 是一款专为长上下文处理设计的模型，支持32k+的文本窗口，并通过搭载[MapReduce](https://github.com/thunlp/LLMxMapReduce/tree/main)能力，能够处理超过100k的上下文。该模型还支持工具调用和代码解释，具备卓越的数学推理能力和中英文指令执行能力，能够高效处理复杂任务。
 
 
----
-
-### 🚀 **历史版本更新**  
 #### **2025.01.12**：[**FM9G-V**](https://www.osredm.com/jiuyuan/CPM-9G-8B/tree/FM9G-V/quick_start_clean/readmes/quick_start.md)
 - **模型**：**13B 多模态基础大模型**，支持 **单图文推理**。
 - **训练**：开源了 **多模态基础大模型** 的训练代码。
