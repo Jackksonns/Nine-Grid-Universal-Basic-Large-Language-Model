@@ -104,7 +104,7 @@ pip install protobuf
 
 #### 安装vllm依赖
 
-使用vllm进行推理需要使用我们预编译的vllm whl安装包。此安装包在CUDA12.2、python3.10环境下编译，可安装后执行推理。安装包可在 [https://drive.weixin.qq.com/s?k=AKIAqQfNADgVKiAUcZ](https://drive.weixin.qq.com/s?k=AKIAqQfNADgVKiAUcZ) 下载。
+使用vllm进行推理需要使用我们预编译的vllm whl安装包。此安装包在CUDA12.2、python3.10环境下编译，适配预编译版本为cuda 12.x的torch 2.3.0，可安装后执行推理。安装包可在 [https://drive.weixin.qq.com/s?k=AKIAqQfNADgsGqHMan](https://drive.weixin.qq.com/s?k=AKIAqQfNADgsGqHMan) 下载。
 
 请注意此版本的Vllm安装包适用于FM 9G 4B、7B和70B模型，不适用于FM9G2B、8B模型，如果需要推理FM9G2B、8B模型，请参考[此说明文档](../quick_start_clean/readmes/quick_start.md)下载对应版本的Vllm whl安装包。
 
