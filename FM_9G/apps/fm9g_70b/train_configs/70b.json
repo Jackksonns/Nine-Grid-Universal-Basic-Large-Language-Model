@@ -1,0 +1,10 @@
+{
+    "pretrain": {
+        "train_iters": 1000,
+        "batch_size": 1,
+        "max_length": 1024,
+        "n_gpus": 8,
+        "lr": 0.0001,
+        "save_iters": 500
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "vocab_size": 73448,
+    "dropout_p": 0.0,
+    "eps": 1e-06,
+    "half": true,
+    "half_type": "bf16",
+    "use_flash_attn": true,
+    "flash_attn_mask_shape": "2d",
+    "dim_model": 8192,
+    "dim_ff": 29568,
+    "dim_head": 128,
+    "num_heads": 64,
+    "num_kv_heads": 64,
+    "num_layers": 80,
+    "activate_fn": "silu",
+    "init_std": 0.10,
+    "scale": false,
+    "scale_emb": 12,
+    "scale_depth": -1,
+    "dim_model_base": 128,
+    "model_type": "fm9g",
+    "architectures": [
+        "FM9GForCausalLM"
+    ],
+    "qk_norm": false,
+    "qkv_bias": true,
+    "tie_lm_head": false,
+    "ffn_gated": true,
+    "base": 1000000.0,
+    "max_length": 32768,
+    "ori_max_length": 32768,
+    "use_checkpoint": true
+}

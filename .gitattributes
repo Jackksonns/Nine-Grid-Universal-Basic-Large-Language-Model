@@ -1,0 +1,7 @@
+*.whl filter=lfs diff=lfs merge=lfs -text
+*.pt filter=lfs diff=lfs merge=lfs -text
+quick_start_clean/tools/vllm-0.5.0.dev0+cu122-cp310-cp310-linux_x86_64.whl filter=lfs diff=lfs merge=lfs -text
+quick_start_clean/tools/libcpm-0.2.12.dev6-cp310-cp310-linux_x86_64.whl filter=lfs diff=lfs merge=lfs -text
+libcpm-1.0.0-cp38-cp38-linux_x86_64.whl filter=lfs diff=lfs merge=lfs -text
+model/cpm9g-8b-sft-epoch-1.pt filter=lfs diff=lfs merge=lfs -text
+model/cpm9g-8b-sft-epoch-8.pt filter=lfs diff=lfs merge=lfs -text

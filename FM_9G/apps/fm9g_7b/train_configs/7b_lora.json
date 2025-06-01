@@ -1,0 +1,16 @@
+{
+    "pretrain": {
+        "train_iters": 1000,
+        "batch_size": 1,
+        "max_length": 4096,
+        "n_gpus": 8,
+        "lr": 0.0001,
+        "save_iters": 5
+    },
+    "finetune": {
+        "lora_layer":  "[\"project_q\",\"project_k\",\"project_v\",\"attention_out\",\"w_0\",\"w_1\",\"w_out\"]",
+        "lora_r": 64,
+        "lora_alpha": 32,
+        "lora_dropout": 0.0
+    }
+}
